@@ -22,15 +22,14 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="40dp"
+          android:layout_height="wrap_content"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtemail"
           android:textSize="20sp"
           android:inputType="textEmailAddress"
           android:drawableEnd="@drawable/ic_baseline_email_24"
-          android:hint="Enter Email"
-          android:textColorHint="#E60F6D"
-          android:textColor="#E60F6D"
+          android:hint="     Email"
+          android:textColor="#0F40EF"
           />
    </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,15 +40,14 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="40dp"
+          android:layout_height="wrap_content"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtpassword"
           android:inputType="textPassword"
           android:textSize="20sp"
           android:drawableEnd="@drawable/ic_baseline_lock_24"
-          android:hint="Enter Password"
-          android:textColorHint="#E60F6D"
-          android:textColor="#E60F6D"
+          android:hint="     Password"
+          android:textColor="#0F40EF"
           />
    </com.google.android.material.textfield.TextInputLayout>
    <Button
