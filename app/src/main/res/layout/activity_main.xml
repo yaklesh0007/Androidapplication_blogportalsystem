@@ -22,7 +22,7 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="40dp"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtemail"
           android:textSize="20sp"
@@ -40,7 +40,7 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="40dp"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtpassword"
           android:inputType="textPassword"
@@ -80,6 +80,10 @@
           android:background="@drawable/edtextshape"
           android:layout_marginLeft="25dp"
           android:id="@+id/btnSignup"
+          android:text="New"
+          android:textStyle="bold"
+          android:textSize="20dp"
+          android:textColor="#17D4B3"
           android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"/>
    </LinearLayout>
 </LinearLayout>
