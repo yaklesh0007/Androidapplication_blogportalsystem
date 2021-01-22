@@ -7,17 +7,11 @@
     android:id="@+id/drawerlayout"
     tools:openDrawer="start"
     tools:context=".DashboardActivity">
-<RelativeLayout
+<include
+    layout="@layout/content_main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/apptoolbar"
-        app:title="Blog"
-        app:titleTextColor="#fff"
-        android:background="@drawable/side_nav_bar"/>
-</RelativeLayout>
+    android:layout_height="wrap_content"
+    />
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
