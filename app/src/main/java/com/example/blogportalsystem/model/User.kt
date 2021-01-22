@@ -2,6 +2,9 @@ package com.example.blogportalsystem.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
 
 data class User
     (
@@ -10,7 +13,7 @@ data class User
     val UserPassword:String?=null,
     val UserPhone:Int?=null,
     val UserImage:String?=null
-): Parcelable {
+):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
@@ -20,12 +23,8 @@ data class User
     ) {
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(UserFullName)
-        parcel.writeString(UserEmail)
-        parcel.writeString(UserPassword)
-        parcel.writeValue(UserPhone)
-        parcel.writeString(UserImage)
+    override fun writeToParcel(dest: android.os.Parcel?, flags: kotlin.Int) {
+        TODO("Not yet implemented")
     }
 
     override fun describeContents(): Int {
@@ -42,6 +41,9 @@ data class User
         }
     }
 
+
 }
+
+
 
 

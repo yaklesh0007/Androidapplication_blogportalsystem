@@ -6,21 +6,31 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.ImageView
 import android.widget.ProgressBar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var imagelogo:ImageView
     private lateinit var progressbar:ProgressBar
-    private val SplashTime:Long=3000
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
         imagelogo=findViewById(R.id.imagelogo)
         progressbar=findViewById(R.id.progressbar)
 
-        Handler().postDelayed({
-            startActivity(Intent(this,MainActivity::class.java))
+//        Handler().postDelayed({
+//            startActivity(Intent(this,MainActivity::class.java))
+//            finish()
+//        },SplashTime)
+        CoroutineScope(Dispatchers.IO).launch{
+            delay(1000)
+            startActivity(Intent(this@SplashScreenActivity,MainActivity::class.java))
+
             finish()
-        },SplashTime)
+        }
 
     }
 }
