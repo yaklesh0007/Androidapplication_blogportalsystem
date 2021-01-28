@@ -35,22 +35,22 @@ class DashboardActivity : AppCompatActivity(),NavigationView.OnNavigationItemSel
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
        when(item.itemId){
             R.id.nav_home->{
-                Toast.makeText(this@Dashboard, "Home navigation has been clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DashboardActivity, "Home navigation has been clicked", Toast.LENGTH_SHORT).show()
             }
            R.id.nav_profile->{
-               Toast.makeText(this, "Home navigation has been clicked", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this@DashboardActivity, "Home navigation has been clicked", Toast.LENGTH_SHORT).show()
            }
            R.id.nav_post->{
-               Toast.makeText(this, "Post navigation has been clicked", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this@DashboardActivity, "Post navigation has been clicked", Toast.LENGTH_SHORT).show()
            }
            R.id.nav_about->{
-               Toast.makeText(this, "About navigation has been clicked", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this@DashboardActivity, "About navigation has been clicked", Toast.LENGTH_SHORT).show()
            }
            R.id.nav_notification->{
-               Toast.makeText(this, "Notification navigation has been clicked", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this@DashboardActivity, "Notification navigation has been clicked", Toast.LENGTH_SHORT).show()
            }
            R.id.nav_logout->{
-               Toast.makeText(this, "Logout navigation has been clicked", Toast.LENGTH_SHORT).show()
+               Toast.makeText(this@DashboardActivity, "Logout navigation has been clicked", Toast.LENGTH_SHORT).show()
            }
        }
         drawerlayout.closeDrawer(GravityCompat.START)

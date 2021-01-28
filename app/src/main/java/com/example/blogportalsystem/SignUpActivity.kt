@@ -6,7 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import com.example.blogportalsystem.db.UserDB
 import com.example.blogportalsystem.model.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var edtfullname:EditText
@@ -28,17 +35,22 @@ class SignUpActivity : AppCompatActivity() {
 
         btnSignup.setOnClickListener {
             var fullname=edtfullname.text.toString()
-            var phone=edtphone.text.toString().toInt()
+            var phone=edtphone.text.toString()
             var email=edtemail.text.toString()
             var password=edtpassword.text.toString()
             var image=edtimage.text.toString()
 
-            var data:User= User(fullname,email,password,phone,image)
+            val user= User(fullname,email,password,phone,image)
 
-            var intent= Intent(this@SignUpActivity,MainActivity::class.java);
-            intent.putExtra("data",data)
-            setResult(Activity.RESULT_OK,intent)
-            finish()
+                CoroutineScope(Dispatchers.IO).launch {
+                    UserDB
+                        .getInstance(this@SignUpActivity)
+                        .getUserDao()
+                        .registerUser(user)
+                    withContext(Main) {
+                        Toast.makeText(this@SignUpActivity, "User register Successfully", Toast.LENGTH_SHORT).show()
+                    }
+                }
             edtfullname.text.clear()
             edtphone.text.clear()
             edtemail.text.clear()
