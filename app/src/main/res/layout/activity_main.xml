@@ -68,23 +68,14 @@
        android:orientation="horizontal"
        android:layout_marginTop="20dp">
       <TextView
-          android:layout_width="wrap_content"
+          android:textSize="25sp"
+          android:layout_margin="10dp"
+          android:gravity="center"
+          android:id="@+id/tvRegister"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Did not have accout?"
-          android:id="@+id/tvtext"
-          android:textSize="24dp"
-          android:textColor="#2196F3"/>
-      <Button
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@drawable/edtextshape"
-          android:layout_marginLeft="25dp"
-          android:id="@+id/btnSignup"
-          android:text="New"
-          android:textStyle="bold"
-          android:textSize="20dp"
-          android:textColor="#17D4B3"
-          android:drawableEnd="@drawable/ic_baseline_arrow_forward_24"/>
+          android:text="@string/registeruser" />
+
    </LinearLayout>
 </LinearLayout>
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.blogportalsystem.db.UserDB
 import com.example.blogportalsystem.model.User
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var edtemail:EditText
     private lateinit var edtpassword:EditText
     private lateinit var btnlogin:Button
-    private lateinit var btnSignup:Button
+    private lateinit var tvRegister:TextView
 
     var lstUsers= arrayListOf<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,10 +29,11 @@ class MainActivity : AppCompatActivity() {
         edtemail=findViewById(R.id.edtemail)
         edtpassword=findViewById(R.id.edtpassword)
         btnlogin=findViewById(R.id.btnlogin)
-        btnSignup=findViewById(R.id.btnSignup)
+
+        tvRegister=findViewById(R.id.tvRegister)
 
         lstUsers= arrayListOf<User>()
-        btnSignup.setOnClickListener {
+        tvRegister.setOnClickListener {
                 startActivity(Intent(this@MainActivity,SignUpActivity::class.java))
         }
 
