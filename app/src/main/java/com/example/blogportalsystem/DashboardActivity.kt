@@ -1,6 +1,7 @@
 package com.example.blogportalsystem
 
 import android.content.pm.PackageManager
+import android.graphics.drawable.Icon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -35,23 +36,31 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var lstTitle:ArrayList<String>
     private lateinit var lstFragments:ArrayList<Fragment>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
         viewPager=findViewById(R.id.viewPager)
         tabLayout=findViewById(R.id.tabLayout)
+
+
         if (!hasPermission()) {
             requestPermission()
         }
+        loadfragment()
+
         val adapter= ViewPagerAdapter(lstFragments,supportFragmentManager,lifecycle)
         viewPager.adapter=adapter
         TabLayoutMediator(tabLayout,viewPager){tab, position ->
             tab.text=lstTitle[position]
         }.attach()
+
+        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_home_24)
+        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_person_24)
+        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_local_phone_24)
+        tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_menu_24)
     }
-
-
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
@@ -78,11 +87,8 @@ class DashboardActivity : AppCompatActivity() {
         lstTitle.add("Profile")
         lstTitle.add("Contact")
         lstTitle.add("More")
-        // set icons
-        tabLayout.getTabAt(0)!!.setIcon(R.drawable.ic_baseline_home_24)
-        tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_person_24)
-        tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_local_phone_24)
-        tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_menu_24)
+
+
         lstFragments= ArrayList<Fragment>()
         lstFragments.add(HomeFragment())
         lstFragments.add(ProfileFragment())
