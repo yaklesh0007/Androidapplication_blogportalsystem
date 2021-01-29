@@ -16,31 +16,42 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SignUpActivity : AppCompatActivity() {
-    private lateinit var edtfullname:EditText
-    private lateinit var edtemail:EditText
-    private lateinit var edtpassword:EditText
-    private lateinit var edtphone:EditText
-    private lateinit var edtimage:EditText
-    private lateinit var btnSignup:Button
+    private lateinit var edtfullname: EditText
+    private lateinit var edtemail: EditText
+    private lateinit var edtpassword: EditText
+    private lateinit var edtphone: EditText
+    private lateinit var edtimage: EditText
+    private lateinit var btnSignup: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        edtfullname=findViewById(R.id.edtfullname)
-        edtemail=findViewById(R.id.edtemail)
-        edtpassword=findViewById(R.id.edtpassword)
-        edtphone=findViewById(R.id.edtphone)
-        edtimage=findViewById(R.id.edtimage)
-        btnSignup=findViewById(R.id.btnSignup)
+        edtfullname = findViewById(R.id.edtfullname)
+        edtemail = findViewById(R.id.edtemail)
+        edtpassword = findViewById(R.id.edtpassword)
+        edtphone = findViewById(R.id.edtphone)
+        edtimage = findViewById(R.id.edtimage)
+        btnSignup = findViewById(R.id.btnSignup)
 
         btnSignup.setOnClickListener {
-            var fullname=edtfullname.text.toString()
-            var phone=edtphone.text.toString()
-            var email=edtemail.text.toString()
-            var password=edtpassword.text.toString()
-            var image=edtimage.text.toString()
+            if (edtfullname.text.isEmpty()) {
+                edtfullname.error = "Full name is required !!"
+            } else if (edtemail.text.isEmpty()) {
+                edtemail.error = "Email is required !!"
+            } else if (edtpassword.text.isEmpty()) {
+                edtpassword.error = "passord is required !!"
+            } else if (edtphone.text.isEmpty()) {
+                edtphone.error = "Phone number is required !!"
+            } else if (edtimage.text.isEmpty()) {
+                edtimage.error = "Image is required !!"
+            } else {
+                var fullname = edtfullname.text.toString()
+                var phone = edtphone.text.toString()
+                var email = edtemail.text.toString()
+                var password = edtpassword.text.toString()
+                var image = edtimage.text.toString()
 
-            val user= User(fullname,email,password,phone,image)
+                val user = User(fullname, email, password, phone, image)
 
                 CoroutineScope(Dispatchers.IO).launch {
                     UserDB
@@ -48,14 +59,21 @@ class SignUpActivity : AppCompatActivity() {
                         .getUserDao()
                         .registerUser(user)
                     withContext(Main) {
-                        Toast.makeText(this@SignUpActivity, "User register Successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@SignUpActivity,
+                            "User register Successfully",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
                     }
                 }
-            edtfullname.text.clear()
-            edtphone.text.clear()
-            edtemail.text.clear()
-            edtpassword.text.clear()
-            edtimage.text.clear()
+                edtfullname.text.clear()
+                edtphone.text.clear()
+                edtemail.text.clear()
+                edtpassword.text.clear()
+                edtimage.text.clear()
+            }
+
         }
 
     }
