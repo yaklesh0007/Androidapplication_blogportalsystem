@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/imageview"
+        android:src="@drawable/logo"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_favorite_border_24"
+            android:text="Love"
+            android:id="@+id/love"
+            android:background="#fff"
+            android:layout_weight="1"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_baseline_chat_bubble_outline_24"
+            android:background="#fff"
+            android:text="Comment"
+            android:layout_weight="2"
+            android:id="@+id/edtcomment"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:drawableStart="@drawable/dislike"
+            android:text="Dislike"
+            android:id="@+id/dislike"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
