@@ -4,14 +4,18 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import com.example.blogportalsystem.db.UserDB
 import com.example.blogportalsystem.model.User
+import com.example.blogportalsystem.repository.UserRepository
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.w3c.dom.Text
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var edtfullname: EditText
@@ -24,6 +28,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var RdoOther:RadioButton
     private lateinit var btnSignup: Button
     private var userType:String="normaluser"
+    private lateinit var linearLayout:LinearLayout
     var gender:String=""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +42,7 @@ class SignUpActivity : AppCompatActivity() {
         RdoFemale=findViewById(R.id.RdoFemale)
         RdoOther=findViewById(R.id.RdoOther)
         btnSignup = findViewById(R.id.btnSignup)
-
+        linearLayout=findViewById(R.id.linearLayout)
         btnSignup.setOnClickListener {
             if (edtfullname.text.isEmpty()) {
                 edtfullname.error = "Full name is required !!"
@@ -48,24 +53,8 @@ class SignUpActivity : AppCompatActivity() {
             } else if (edtphone.text.isEmpty()) {
                 edtphone.error = "Phone number is required !!"
             } else {
-                var fullname = edtfullname.text.toString()
-                var phone = edtphone.text.toString()
-                var email = edtemail.text.toString()
-                var password = edtpassword.text.toString()
-                when{
-                    RdoMale.isChecked->{
-                        gender="Male"
-                    }
-                    RdoFemale.isChecked->{
-                        gender="Female"
-                    }
-                    RdoOther.isChecked->{
-                        gender="Other"
-                    }
-                }
-
-                val user = User(fullname, email, password, phone)
-
+                        SaveUser()
+                         reset()
 //                CoroutineScope(Dispatchers.IO).launch {
 //                    UserDB
 //                        .getInstance(this@SignUpActivity)
@@ -80,7 +69,7 @@ class SignUpActivity : AppCompatActivity() {
 //                        startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
 //                    }
 //                }
-                reset()
+
 
             }
 
@@ -94,6 +83,49 @@ class SignUpActivity : AppCompatActivity() {
         edtpassword.text.clear()
     }
     private fun SaveUser(){
+        var username = edtfullname.text.toString()
+        var phone = edtphone.text.toString().toInt()
+        var email = edtemail.text.toString()
+        var password = edtpassword.text.toString()
+        when{
+            RdoMale.isChecked->{
+                gender="Male"
+            }
+            RdoFemale.isChecked->{
+                gender="Female"
+            }
+            RdoOther.isChecked->{
+                gender="Other"
+            }
+        }
 
+        val user = User(username = username, email = email, password = password,phone = phone,gender = gender,userType = userType)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userRepository = UserRepository()
+                val response = userRepository.registerUser(user)
+                if (response.success == true) {
+                    withContext(Main) {
+//                        Toast.makeText(
+//                            this@SignUpActivity,
+//                            "Register Successful",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+                     val snackbar=  Snackbar.make(linearLayout,"User Register Successfully",Snackbar.LENGTH_INDEFINITE)
+                        snackbar.show()
+                        snackbar.setAction("Close", View.OnClickListener {
+                            snackbar.dismiss()
+                            startActivity(Intent(this@SignUpActivity,MainActivity::class.java))
+                        })
+                    }
+                }
+            }
+            catch (ex: Exception){
+                withContext(Main){
+//                    Toast.makeText(this@SignUpActivity, "$ex", Toast.LENGTH_SHORT).show()
+                    Snackbar.make(linearLayout,"$ex",Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }
