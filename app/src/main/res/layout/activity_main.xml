@@ -51,6 +51,15 @@
           android:textColor="#0F40EF"
           />
    </com.google.android.material.textfield.TextInputLayout>
+   <CheckBox
+       android:layout_marginTop="10dp"
+       android:layout_width="match_parent"
+       android:layout_height="40dp"
+       android:textColor="#232DF2"
+       android:text="Remember me"
+       android:textStyle="bold"
+       android:textSize="20sp"
+       android:id="@+id/chkremember"/>
    <Button
        android:layout_width="match_parent"
        android:layout_height="wrap_content"

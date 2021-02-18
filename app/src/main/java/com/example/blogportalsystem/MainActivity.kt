@@ -23,25 +23,27 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnlogin: Button
     private lateinit var tvRegister: TextView
     private lateinit var linearLayout: LinearLayout
+    private lateinit var chkremember:CheckBox
 
-    var lstUsers = arrayListOf<User>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         edtemail = findViewById(R.id.edtemail)
         edtpassword = findViewById(R.id.edtpassword)
         btnlogin = findViewById(R.id.btnlogin)
+        chkremember=findViewById(R.id.chkremember)
 
         tvRegister = findViewById(R.id.tvRegister)
         linearLayout = findViewById(R.id.linearLayout)
-
-        lstUsers = arrayListOf<User>()
+        getSharedPref()
         tvRegister.setOnClickListener {
             startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
         }
 
         btnlogin.setOnClickListener {
-
+            if(chkremember.isChecked){
+                saveSharedPref()
+            }
             login();
 
         }
@@ -88,5 +90,26 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+    private fun saveSharedPref() {
+         val email = edtemail.text.toString()
+        val password = edtpassword.text.toString()
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val editor = sharedPref.edit()
+        editor.putString("email", email)
+        editor.putString("password", password)
+        editor.apply()
+        Toast.makeText(
+            this@MainActivity,
+            "email and password saved",
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+    private fun getSharedPref() {
+        val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
+        val email = sharedPref.getString("email", "")
+        val password = sharedPref.getString("password", "")
+        edtemail.setText("$email")
+        edtpassword.setText("$password")
     }
 }
