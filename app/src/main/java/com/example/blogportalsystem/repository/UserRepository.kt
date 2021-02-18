@@ -17,4 +17,10 @@ class UserRepository:MyApiRequest() {
             userAPI.registerUser(user)
         }
     }
+    //login user
+    suspend fun checkUser(email:String,password:String):LoginResponse{
+        return apiRequest {
+            userAPI.checkUser(email,password)
+        }
+    }
 }
