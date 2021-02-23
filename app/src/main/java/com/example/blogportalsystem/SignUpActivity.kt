@@ -99,27 +99,23 @@ class SignUpActivity : AppCompatActivity() {
                 val response = userRepository.registerUser(user)
                 if (response.success == true) {
                     withContext(Main) {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            "Register Successful",
-                            Toast.LENGTH_SHORT
-                        ).show()
-//                        val snackbar = Snackbar.make(
-//                            linearLayout,
-//                            "User Register Successfully",
-//                            Snackbar.LENGTH_LONG
-//                        )
-//                        snackbar.show()
-//                        snackbar.setAction("Close", View.OnClickListener {
-//                            snackbar.dismiss()
-//
-//                        })
+
+                        val snackbar = Snackbar.make(
+                            linearLayout,
+                            "User Register Successfully",
+                            Snackbar.LENGTH_LONG
+                        )
+                        snackbar.show()
+                        snackbar.setAction("Close", View.OnClickListener {
+                            snackbar.dismiss()
+
+                        })
                     }
                 }
             } catch (ex: Exception) {
                 withContext(Main) {
-                    Toast.makeText(this@SignUpActivity, "$ex", Toast.LENGTH_SHORT).show()
-//                    Snackbar.make(linearLayout, "$ex", Snackbar.LENGTH_LONG).show()
+
+                    Snackbar.make(linearLayout, "$ex", Snackbar.LENGTH_LONG).show()
                 }
             }
         }
