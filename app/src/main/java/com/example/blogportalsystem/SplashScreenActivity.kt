@@ -21,10 +21,6 @@ class SplashScreenActivity : AppCompatActivity() {
         imagelogo=findViewById(R.id.imagelogo)
         progressbar=findViewById(R.id.progressbar)
 
-//        Handler().postDelayed({
-//            startActivity(Intent(this,MainActivity::class.java))
-//            finish()
-//        },SplashTime)
         CoroutineScope(Dispatchers.IO).launch{
             delay(1000)
             startActivity(Intent(this@SplashScreenActivity,MainActivity::class.java))

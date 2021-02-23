@@ -5,6 +5,7 @@ import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.api.UserAPI
 import com.example.blogportalsystem.model.User
 import com.example.blogportalsystem.response.LoginResponse
+import com.example.blogportalsystem.response.RegisterResponse
 
 class UserRepository:MyApiRequest() {
     private val userAPI =
@@ -12,7 +13,7 @@ class UserRepository:MyApiRequest() {
 
     //register User
 
-    suspend fun registerUser(user: User): LoginResponse {
+    suspend fun registerUser(user: User): RegisterResponse {
         return apiRequest {
             userAPI.registerUser(user)
         }

@@ -6,13 +6,53 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".fragments.ProfileFragment">
-
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/signup"
+        android:id="@+id/ImgProfile"
+        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="Username"
         android:textSize="40sp"
+        android:id="@+id/TvUsername"
         android:textStyle="bold"
         android:textAlignment="center"/>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="25sp"
+        android:id="@+id/TvEmail"
+        android:textStyle="normal"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textSize="25sp"
+        android:id="@+id/TvPhone"
+        android:textStyle="normal"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:id="@+id/TvGender"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        android:textAlignment="center"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BtnUpdateProfile"
+        android:textSize="29sp"
+        android:background="@drawable/edtextshape"
+        android:text=" update"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
+        android:drawableStart="@drawable/edit_icon"
+        />
 </LinearLayout>
