@@ -55,22 +55,6 @@ class SignUpActivity : AppCompatActivity() {
             } else {
                 SaveUser()
                 reset()
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    UserDB
-//                        .getInstance(this@SignUpActivity)
-//                        .getUserDao()
-//                        .registerUser(user)
-//                    withContext(Main) {
-//                        Toast.makeText(
-//                            this@SignUpActivity,
-//                            "User register Successfully",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                        startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
-//                    }
-//                }
-
-
             }
 
         }
