@@ -1,11 +1,10 @@
-package com.example.blogportalsystem
+package com.example.blogportalsystem.ui
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.blogportalsystem.R
 //import com.example.blogportalsystem.db.UserDB
 import com.example.blogportalsystem.model.User
 import com.example.blogportalsystem.repository.UserRepository
@@ -15,7 +14,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.w3c.dom.Text
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var edtfullname: EditText

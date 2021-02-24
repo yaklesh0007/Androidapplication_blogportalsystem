@@ -1,26 +1,17 @@
-package com.example.blogportalsystem
+package com.example.blogportalsystem.ui
 
 import android.content.pm.PackageManager
-import android.graphics.drawable.Icon
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.Toast
-import android.widget.Toolbar
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.blogportalsystem.R
 import com.example.blogportalsystem.adapter.ViewPagerAdapter
 import com.example.blogportalsystem.fragments.AboutFragment
 import com.example.blogportalsystem.fragments.HomeFragment
 import com.example.blogportalsystem.fragments.MoreFragment
 import com.example.blogportalsystem.fragments.ProfileFragment
-import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

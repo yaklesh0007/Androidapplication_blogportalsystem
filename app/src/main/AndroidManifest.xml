@@ -18,18 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdatePostActivity"></activity>
-        <activity android:name=".AddPostActivity" />
-        <activity android:name=".DashboardActivity" />
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".ui.UpdatePostActivity"></activity>
+        <activity android:name=".ui.AddPostActivity" />
+        <activity android:name=".ui.DashboardActivity" />
+        <activity android:name=".ui.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.SignUpActivity" />
+        <activity android:name=".ui.MainActivity" />
     </application>
 
 </manifest>

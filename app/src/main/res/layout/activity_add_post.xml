@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="20dp"
     android:orientation="vertical"
-    tools:context=".AddPostActivity">
+    tools:context=".ui.AddPostActivity">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
