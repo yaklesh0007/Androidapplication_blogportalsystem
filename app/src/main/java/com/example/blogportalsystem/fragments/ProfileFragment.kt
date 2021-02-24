@@ -18,6 +18,9 @@ class ProfileFragment : Fragment() {
     private lateinit var TvPhone:TextView
     private lateinit var TvGender:TextView
     private lateinit var BtnUpdateProfile:Button
+    private var REQUEST_GALLERY_CODE = 0
+    private var REQUEST_CAMERA_CODE = 1
+    private var imageUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +39,11 @@ class ProfileFragment : Fragment() {
         TvPhone=view.findViewById(R.id.TvPhone)
         TvGender=view.findViewById(R.id.TvGender)
         BtnUpdateProfile=view.findViewById(R.id.BtnUpdateProfile)
+        ImgProfile.setOnClickListener {
+
+        }
         return view
     }
+
 
 }

@@ -3,17 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:layout_marginTop="20dp"
     android:gravity="center"
     tools:context=".fragments.HomeFragment">
-
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Home"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:textAlignment="center"/>
+        android:id="@+id/recyclerView"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/plus"
+        android:tint="#ff"
+        android:layout_margin="16dp" />
 
 
 </LinearLayout>

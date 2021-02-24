@@ -14,10 +14,14 @@
         android:padding="30dp"
         android:id="@+id/linearLayout">
 
-        <ImageView
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/signup" />
+            android:layout_height="wrap_content"
+            android:text="Sign up Here!!"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#06A6BA"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -27,8 +31,7 @@
             <EditText
                 android:id="@+id/edtfullname"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/edtextshape"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_person_24"
                 android:hint="      Full Name"
                 android:inputType="textEmailAddress"
@@ -45,8 +48,7 @@
             <EditText
                 android:id="@+id/edtemail"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/edtextshape"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_email_24"
                 android:hint="      Email"
                 android:inputType="textEmailAddress"
@@ -63,8 +65,7 @@
             <EditText
                 android:id="@+id/edtpassword"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/edtextshape"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:hint="      Password"
                 android:inputType="textPassword"
@@ -81,8 +82,7 @@
             <EditText
                 android:id="@+id/edtphone"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/edtextshape"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_local_phone_24"
                 android:hint="      Phone"
                 android:inputType="phone"
@@ -95,7 +95,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/edtextshape"
             android:padding="15dp"
             android:tooltipText="Gender">
 
@@ -105,7 +104,6 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:text="Male" />
-
             <RadioButton
                 android:id="@+id/RdoFemale"
                 android:layout_width="match_parent"
