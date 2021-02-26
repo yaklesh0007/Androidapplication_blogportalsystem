@@ -7,8 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
+import com.example.blogportalsystem.api.ServiceBuilder
+import com.example.blogportalsystem.repository.UserRepository
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ProfileFragment : Fragment() {
@@ -41,6 +48,28 @@ class ProfileFragment : Fragment() {
         BtnUpdateProfile=view.findViewById(R.id.BtnUpdateProfile)
         ImgProfile.setOnClickListener {
 
+        }
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val userRepository=UserRepository()
+                val response=userRepository.showprofile()
+                if (response.success==true){
+                    val userData=response.data
+                    TvUsername.text=userData?.username;
+                    TvEmail.text=userData?.email;
+                    TvPhone.text=userData?.phone;
+                    TvGender.text=userData?.gender;
+                    Glide.with(context!!)
+                        .load(userData?.image)
+                        .into(ImgProfile)
+                }
+                else{
+                    Toast.makeText(context, "your information did not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+            catch (ex:Exception){
+
+            }
         }
         return view
     }

@@ -4,6 +4,7 @@ import com.example.blogportalsystem.api.MyApiRequest
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.api.UserAPI
 import com.example.blogportalsystem.model.User
+import com.example.blogportalsystem.response.FetchUserResponse
 import com.example.blogportalsystem.response.LoginResponse
 import com.example.blogportalsystem.response.RegisterResponse
 
@@ -22,6 +23,12 @@ class UserRepository:MyApiRequest() {
     suspend fun checkUser(email:String,password:String):LoginResponse{
         return apiRequest {
             userAPI.checkUser(email,password)
+        }
+    }
+    // show profile
+    suspend fun showprofile():FetchUserResponse{
+        return apiRequest {
+            userAPI.showprofile(ServiceBuilder.token!!)
         }
     }
     
