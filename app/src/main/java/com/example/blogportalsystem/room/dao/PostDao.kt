@@ -11,5 +11,5 @@ interface PostDao {
     suspend fun insertPost(post:Post )
 
     @Query("select * from Post")
-    suspend fun getPost():ArrayList<Post>
+    suspend fun getPost():List<Post>
 }

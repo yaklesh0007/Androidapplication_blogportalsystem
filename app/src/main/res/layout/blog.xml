@@ -95,14 +95,14 @@
             android:background="#fff"
             android:text="Comment"
             android:layout_weight="2"
-            android:id="@+id/edtcomment"/>
+            android:id="@+id/btncomment"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#fff"
             android:drawableStart="@drawable/dislike"
             android:text="Dislike"
-            android:id="@+id/dislike"
+            android:id="@+id/btndislike"
             android:layout_weight="1"/>
     </LinearLayout>
 

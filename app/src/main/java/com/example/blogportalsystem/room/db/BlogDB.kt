@@ -12,7 +12,7 @@ import com.example.blogportalsystem.room.dao.PostDao
     version = 1
 )
 abstract class BlogDB:RoomDatabase() {
-         abstract fun getUserDAO() : PostDao
+         abstract fun getPostDAO() : PostDao
     companion object {
         @Volatile
         private var Instance: BlogDB? = null
