@@ -14,8 +14,8 @@
     android:padding="30dp">
    <ImageView
        android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:src="@drawable/login"/>
+       android:layout_height="200dp"
+       android:src="@drawable/logo"/>
    <com.google.android.material.textfield.TextInputLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
@@ -23,7 +23,7 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="40dp"
+          android:layout_height="50dp"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtemail"
           android:textSize="20sp"
@@ -41,7 +41,7 @@
 
       <EditText
           android:layout_width="match_parent"
-          android:layout_height="40dp"
+          android:layout_height="50dp"
           android:background="@drawable/edtextshape"
           android:id="@+id/edtpassword"
           android:inputType="textPassword"

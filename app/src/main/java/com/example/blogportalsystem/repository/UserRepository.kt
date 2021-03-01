@@ -7,6 +7,7 @@ import com.example.blogportalsystem.model.User
 import com.example.blogportalsystem.response.FetchUserResponse
 import com.example.blogportalsystem.response.LoginResponse
 import com.example.blogportalsystem.response.RegisterResponse
+import okhttp3.MultipartBody
 
 class UserRepository:MyApiRequest() {
     private val userAPI =
@@ -31,5 +32,14 @@ class UserRepository:MyApiRequest() {
             userAPI.showprofile(ServiceBuilder.token!!)
         }
     }
+
+    //update profile picture
+    suspend fun updateprofilepic(image:MultipartBody.Part):FetchUserResponse{
+        return apiRequest {
+            userAPI.updateprofilepic(ServiceBuilder.token!!,image)
+        }
+    }
+
+
     
 }
