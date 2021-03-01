@@ -83,10 +83,10 @@ class ProfileFragment : Fragment() {
 
                     withContext(Main){
 
-                    TvUsername.text=userData!!.username
-                    TvEmail.text=userData!!.email
-                        TvPhone.text=userData!!.phone
-                        TvGender.text=userData!!.gender
+                    TvUsername.text="Username: "+userData!!.username
+                    TvEmail.text="Email: "+userData!!.email
+                        TvPhone.text="Phone Number:"+userData!!.phone
+                        TvGender.text="Gender: "+userData!!.gender
                         Glide.with(context!!)
                             .load(userData?.loadImagePath())
                             .into(ImgProfile)
