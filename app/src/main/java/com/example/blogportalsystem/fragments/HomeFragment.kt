@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
         }
         return view
     }
+
     private fun getallblog(){
         CoroutineScope(Dispatchers.IO).launch {
 //          val  lsblog = BlogDB
@@ -56,6 +57,10 @@ class HomeFragment : Fragment() {
             {
                 val blogrepository = PostRepository()
                 val response = blogrepository.getallBlog()
+                BlogDB
+                    .getInstance(context!!)
+                    .getPostDAO()
+                    .insertPost(response.data!!)
                 if (response.success == true){
                     withContext(Dispatchers.Main){
                         recyclerView.adapter = HomeAdapter(context!!,response.data!!)

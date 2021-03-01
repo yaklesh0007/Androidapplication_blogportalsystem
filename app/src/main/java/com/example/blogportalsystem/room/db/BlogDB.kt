@@ -9,7 +9,7 @@ import com.example.blogportalsystem.room.dao.PostDao
 
 @Database(
     entities = [(Post::class)],
-    version = 1
+    version = 2
 )
 abstract class BlogDB:RoomDatabase() {
          abstract fun getPostDAO() : PostDao
@@ -32,7 +32,7 @@ abstract class BlogDB:RoomDatabase() {
                 context.applicationContext,
                 BlogDB::class.java,
                 "Blogdatabase"
-            ).build()
+            ).fallbackToDestructiveMigration().build()
     }
 
 }
