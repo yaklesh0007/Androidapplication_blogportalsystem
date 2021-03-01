@@ -7,9 +7,8 @@ import kotlin.collections.ArrayList
 
 @Entity
 data class Post(
-    @PrimaryKey
-    val _id:String,
-
+    @PrimaryKey(autoGenerate = false)
+    val _id:String="",
     val title:String?=null,
     val image:String?=null,
     val description:String?=null,

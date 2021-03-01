@@ -24,7 +24,8 @@ import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.Exception
+
+import kotlin.Exception
 
 class AddPostActivity : AppCompatActivity() {
     private lateinit var image:ImageView
@@ -67,18 +68,34 @@ class AddPostActivity : AppCompatActivity() {
     fun AddBlog(){
         val title=etTitle.text.toString()
         val description=etdescription.text.toString()
-        val userID="6030e2c6993344261ca6db52"
-        val categoryID=itemselected
-        var post= Post(_id = "qweqry",title=title,description = description,userID = userID,categoryID = categoryID)
-        CoroutineScope(Dispatchers.IO).launch {
-            BlogDB
-                .getInstance(this@AddPostActivity)
-                .getPostDAO()
-                .insertPost(post)
 
-            // Switch to main thread
-            withContext(Dispatchers.Main){
-                Toast.makeText(this@AddPostActivity, "Post inserted successfully!!", Toast.LENGTH_SHORT).show()
+        val categoryID=itemselected
+        var post= Post(title=title,description = description,categoryID = categoryID)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+
+
+                val blogrepository = PostRepository()
+                val response = blogrepository.addBlog(post)
+                if (response.success == true) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@AddPostActivity,
+                            "Post inserted successfully!!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+//            BlogDB
+//                .getInstance(this@AddPostActivity)
+//                .getPostDAO()
+//                .insertPost(post)
+
+                // Switch to main thread
+
+            }
+            catch (e:Exception){
+                Toast.makeText(this@AddPostActivity, "$e", Toast.LENGTH_SHORT).show()
             }
         }
     }

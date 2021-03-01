@@ -87,15 +87,14 @@ class ProfileFragment : Fragment() {
                     TvEmail.text=userData!!.email
                         TvPhone.text=userData!!.phone
                         TvGender.text=userData!!.gender
-                        val imagesrc=userData!!.image
                         Glide.with(context!!)
-                            .load(userData!!.image)
+                            .load(userData?.loadImagePath())
                             .into(ImgProfile)
 
                     }
                 }
                 else{
-                    Toast.makeText(context, "your information did not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "your information was not found", Toast.LENGTH_SHORT).show()
                 }
             }
             catch (ex:Exception){
