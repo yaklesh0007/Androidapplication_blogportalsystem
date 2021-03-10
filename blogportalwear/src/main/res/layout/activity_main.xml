@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear"
+    android:orientation="vertical"
+    android:padding="@dimen/box_inset_layout_padding">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter email"
+        android:text="Email"
+        android:id="@+id/Etemail"
+        android:textColor="#3D357A"
+        android:textColorHint="#3D357A"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter password"
+        android:text="Password"
+        android:id="@+id/Etpassword"
+        android:inputType="textPassword"
+        android:textColor="#3D357A"
+        android:textColorHint="#3D357A"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/Btnlogin"
+       />
+
+</LinearLayout>

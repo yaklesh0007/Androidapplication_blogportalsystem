@@ -1,2 +1,3 @@
+include ':blogportalwear'
 include ':app'
 rootProject.name = "BlogPortalSystem"
