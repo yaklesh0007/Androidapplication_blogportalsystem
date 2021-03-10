@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter email"
-        android:text="Email"
         android:id="@+id/Etemail"
         android:textColor="#3D357A"
         android:textColorHint="#3D357A"/>
@@ -22,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter password"
-        android:text="Password"
         android:id="@+id/Etpassword"
         android:inputType="textPassword"
         android:textColor="#3D357A"
