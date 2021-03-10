@@ -131,6 +131,9 @@ class SignUpActivity : AppCompatActivity() {
                         })
                     }
                 }
+                else{
+                    Toast.makeText(this@SignUpActivity, "${response.message}", Toast.LENGTH_SHORT).show()
+                }
             } catch (ex: Exception) {
                 withContext(Main) {
 
