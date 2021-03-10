@@ -1,5 +1,6 @@
 package com.example.blogportalwear
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.widget.Button
@@ -19,7 +20,8 @@ class MainActivity : WearableActivity() {
         Btnlogin.setOnClickListener {
             var email=Etemail.text.toString()
             var password=Etpassword.text.toString()
-            Toast.makeText(this@MainActivity, "$email+$password", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@MainActivity, "$email,$password", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@MainActivity,WearableDashboardActivity::class.java))
         }
 
         // Enables Always-on
