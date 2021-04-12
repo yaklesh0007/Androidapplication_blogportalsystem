@@ -14,11 +14,12 @@ import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Like
 import com.example.blogportalsystem.model.Post
+import com.example.blogportalsystem.model.PostWithUser
 import de.hdodenhof.circleimageview.CircleImageView
 
 class HomeAdapter(
     val context:Context,
-    var lsblog:List<Post>
+    var lsblog:List<PostWithUser>
 ):RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
     class HomeViewHolder(view:View):RecyclerView.ViewHolder(view){
         val TvUsername: TextView
@@ -59,9 +60,19 @@ class HomeAdapter(
         val blog=lsblog[position]
         holder.tvtitle.text=blog.title
         holder.tvdescription.text=blog.description
-        Glide.with(context)
-            .load(blog.image)
-            .into(holder.imageview)
+        holder.TvUsername.text=blog.userID?.username
+        blog.image?.let {
+
+            Glide.with(context!!)
+                .load(ServiceBuilder.loadImagePath() + it)
+                .into(holder.imageview)
+        }
+        blog.userID?.image?.let{
+            Glide.with(context!!)
+                .load(ServiceBuilder.loadImagePath() + it)
+                .into(holder.profile_image)
+        }
+
     }
 
     override fun getItemCount(): Int {

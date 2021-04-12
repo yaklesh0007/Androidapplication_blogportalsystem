@@ -5,11 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.blogportalsystem.model.Post
+import com.example.blogportalsystem.model.PostWithUser
 import com.example.blogportalsystem.room.dao.PostDao
 
 @Database(
-    entities = [(Post::class)],
-    version = 2
+    entities = [(Post::class), (PostWithUser::class)],
+    version = 3
 )
 abstract class BlogDB:RoomDatabase() {
          abstract fun getPostDAO() : PostDao

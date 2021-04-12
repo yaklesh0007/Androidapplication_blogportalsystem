@@ -67,7 +67,7 @@ class ProfileFragment : Fragment() {
         showProfile()
         ImgProfile.setOnClickListener {
                 loadPopUpMenu()
-            uploadImage()
+//            uploadImage()
         }
 
         return view
@@ -87,9 +87,13 @@ class ProfileFragment : Fragment() {
                     TvEmail.text="Email: "+userData!!.email
                         TvPhone.text="Phone Number:"+userData!!.phone
                         TvGender.text="Gender: "+userData!!.gender
-                        Glide.with(context!!)
-                            .load(userData?.loadImagePath())
-                            .into(ImgProfile)
+
+                        userData.image?.let {
+
+                            Glide.with(context!!)
+                                .load(ServiceBuilder.loadImagePath() + it)
+                                .into(ImgProfile)
+                        }
 
                     }
                 }
@@ -116,7 +120,7 @@ class ProfileFragment : Fragment() {
                 cursor!!.moveToFirst()
                 val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                 imageUrl = cursor.getString(columnIndex)
-                ImgProfile.setImageBitmap(BitmapFactory.decodeFile(imageUrl))
+                ImgProfile.setImageURI(data.data)
                 cursor.close()
             } else if (requestCode == REQUEST_CAMERA_CODE && data != null) {
                 val imageBitmap = data.extras?.get("data") as Bitmap
@@ -125,6 +129,7 @@ class ProfileFragment : Fragment() {
                 imageUrl = file!!.absolutePath
                 ImgProfile.setImageBitmap(BitmapFactory.decodeFile(imageUrl))
             }
+            uploadImage()
         }
     }
 
@@ -186,8 +191,12 @@ class ProfileFragment : Fragment() {
             val reqFile =
                 RequestBody.create(MediaType.parse("multipart/form-data"), file)
             val image =
-                MultipartBody.Part.createFormData("file", file.name, reqFile)
+                MultipartBody.Part.createFormData("image", file.name, reqFile)
             CoroutineScope(Dispatchers.IO).launch {
+                withContext(Main) {
+                    Toast.makeText(context, "try", Toast.LENGTH_SHORT)
+                        .show()
+                }
                 try {
                     val userRepository = UserRepository()
                     val response = userRepository.updateprofilepic( image)

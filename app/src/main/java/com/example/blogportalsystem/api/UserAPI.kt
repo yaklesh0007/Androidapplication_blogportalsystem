@@ -27,7 +27,7 @@ interface UserAPI {
     ):Response<FetchUserResponse>
 
     @Multipart
-    @PUT("user/profile/update")
+    @POST("user/profile/update")
     suspend fun updateprofilepic(
         @Header("Authorization") token : String,
         @Part file: MultipartBody.Part

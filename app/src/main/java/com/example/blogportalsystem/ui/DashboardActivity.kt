@@ -3,8 +3,10 @@ package com.example.blogportalsystem.ui
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.adapter.ViewPagerAdapter
@@ -20,21 +22,21 @@ class DashboardActivity : AppCompatActivity() {
         android.Manifest.permission.CAMERA,
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
         android.Manifest.permission.ACCESS_FINE_LOCATION
-
     )
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
     private lateinit var lstTitle:ArrayList<String>
     private lateinit var lstFragments:ArrayList<Fragment>
-
-
+    private lateinit var Searchbox:SearchView
+    private lateinit var DasrecyclerView:RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
         viewPager=findViewById(R.id.viewPager)
         tabLayout=findViewById(R.id.tabLayout)
-
+        DasrecyclerView=findViewById(R.id.DasrecyclerView)
+        Searchbox=findViewById(R.id.Searchbox)
 
         if (!hasPermission()) {
             requestPermission()
@@ -78,7 +80,6 @@ class DashboardActivity : AppCompatActivity() {
         lstTitle.add("Profile")
         lstTitle.add("Contact")
         lstTitle.add("More")
-
 
         lstFragments= ArrayList<Fragment>()
         lstFragments.add(HomeFragment())

@@ -107,6 +107,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("MyPref", MODE_PRIVATE)
         val email = sharedPref.getString("email", "")
         val password = sharedPref.getString("password", "")
+
         edtemail.setText("$email")
         edtpassword.setText("$password")
     }

@@ -14,7 +14,15 @@
         android:background="@drawable/side_nav_bar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="Blog" />
-
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Searchbox"
+        android:background="@drawable/edtextshape"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DasrecyclerView"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
