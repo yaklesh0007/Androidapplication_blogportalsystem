@@ -6,6 +6,7 @@ import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.response.AddblogResponce
 import com.example.blogportalsystem.response.GetBlogResponse
+import com.example.blogportalsystem.response.getmyblogResponce
 
 class PostRepository :MyApiRequest(){
     private val blogAPI=ServiceBuilder.buildService(BlogAPI::class.java)
@@ -21,6 +22,20 @@ class PostRepository :MyApiRequest(){
     suspend fun getallBlog():GetBlogResponse{
         return apiRequest {
             blogAPI.getblog(
+                ServiceBuilder.token!!
+            )
+        }
+    }
+    suspend fun deleteblog(id:String,userID:String):getmyblogResponce{
+        return apiRequest {
+            blogAPI.deletepost(
+                ServiceBuilder.token!!,id,userID
+            )
+        }
+    }
+    suspend fun getmypost():getmyblogResponce{
+        return apiRequest {
+            blogAPI.getmypost(
                 ServiceBuilder.token!!
             )
         }
