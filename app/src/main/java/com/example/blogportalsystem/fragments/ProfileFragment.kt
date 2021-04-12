@@ -18,6 +18,7 @@ import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
@@ -47,6 +48,7 @@ class ProfileFragment : Fragment() {
     private lateinit var TvPhone:TextView
     private lateinit var TvGender:TextView
     private lateinit var BtnUpdateProfile:Button
+    private lateinit var recyclerViewshow:RecyclerView
 
     private var REQUEST_GALLERY_CODE = 0
     private var REQUEST_CAMERA_CODE = 1
@@ -64,6 +66,7 @@ class ProfileFragment : Fragment() {
         TvPhone=view.findViewById(R.id.TvPhone)
         TvGender=view.findViewById(R.id.TvGender)
         BtnUpdateProfile=view.findViewById(R.id.BtnUpdateProfile)
+        recyclerViewshow=view.findViewById(R.id.recyclerViewshow)
         showProfile()
         ImgProfile.setOnClickListener {
                 loadPopUpMenu()

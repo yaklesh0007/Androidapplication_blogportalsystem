@@ -33,7 +33,6 @@ class HomeAdapter(
         val love:Button
         val btncomment:Button
         val btndislike:Button
-
         init {
             profile_image=view.findViewById(R.id.profile_image)
             TvUsername=view.findViewById(R.id.TvUsername)
