@@ -7,6 +7,7 @@ import com.example.blogportalsystem.model.User
 import com.example.blogportalsystem.response.FetchUserResponse
 import com.example.blogportalsystem.response.LoginResponse
 import com.example.blogportalsystem.response.RegisterResponse
+import com.example.blogportalsystem.response.UpdateprofileInfo
 import okhttp3.MultipartBody
 
 class UserRepository:MyApiRequest() {
@@ -18,6 +19,12 @@ class UserRepository:MyApiRequest() {
     suspend fun registerUser(user: User): RegisterResponse {
         return apiRequest {
             userAPI.registerUser(user)
+        }
+    }
+    //update information
+    suspend fun updateprofileinfor(user:User):UpdateprofileInfo{
+        return apiRequest {
+            userAPI.updateprofileinfo(ServiceBuilder.token!!,user)
         }
     }
     //login user

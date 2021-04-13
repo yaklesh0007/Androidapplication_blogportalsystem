@@ -9,6 +9,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/linearLayoutforprofileupdate"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -54,7 +55,7 @@
             android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
     <RadioGroup
-        android:id="@+id/RdoGroup"
+        android:id="@+id/UpdateRdoGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
