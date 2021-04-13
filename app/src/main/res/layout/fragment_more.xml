@@ -6,12 +6,41 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center"
+    android:background="#fff"
     tools:context=".fragments.MoreFragment">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageProfile"
+        android:src="@drawable/logo"/>
+
 
     <Button
         android:layout_width="match_parent"
         android:id="@+id/btnMap"
         android:layout_height="wrap_content"
+       android:drawableEnd="@drawable/location"
         android:text="Show location in Map"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnshowmypost"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_baseline_whatshot_24"
+        android:text="My post"/>
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnaddpost"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/plus"
+        android:text="Add post"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnlogout"
+        android:drawableEnd="@drawable/logout"
+        android:layout_height="wrap_content"
+        android:text="logout"/>
+
+
 
 </LinearLayout>
