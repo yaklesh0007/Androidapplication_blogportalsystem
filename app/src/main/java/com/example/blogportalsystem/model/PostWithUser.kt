@@ -3,6 +3,7 @@ package com.example.blogportalsystem.model
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity
 data class PostWithUser(
@@ -13,9 +14,8 @@ data class PostWithUser(
     val description:String?=null,
     @Embedded(prefix = "user_")
     val userID:User?=null,
+    @SerializedName("category")
     val categoryID:String?=null,
-//    val likes:ArrayList<Like>,
-//    val comments:ArrayList<Comment>,
     val createdAT:String?=null,
     val updatedAT:String?=null
 )

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
+import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.model.PostWithUser
 import com.example.blogportalsystem.repository.PostRepository
 import kotlinx.coroutines.CoroutineScope
@@ -21,27 +22,27 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class ShowMyPostAdapter(
-    val context: Context,
-    var lstmyblogs:MutableList<PostWithUser>
+    var context: Context,
+    var lstmyblogs:MutableList<Post>
 
 ) : RecyclerView.Adapter<ShowMyPostAdapter.ShowMyPostViewHolder>(){
     class ShowMyPostViewHolder(view:View):RecyclerView.ViewHolder(view){
-        val tvtitle: TextView = view.findViewById(R.id.tvtitle)
-        val image:ImageView=view.findViewById(R.id.image)
-        val edit:ImageView=view.findViewById(R.id.edit)
-        val delete:ImageView=view.findViewById(R.id.delete)
+        var tvtitle: TextView = view.findViewById(R.id.tvtitle)
+        var image:ImageView=view.findViewById(R.id.image)
+        var edit:ImageView=view.findViewById(R.id.edit)
+        var delete:ImageView=view.findViewById(R.id.delete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMyPostViewHolder {
 
-        val view= LayoutInflater.from(parent.context)
+        var view= LayoutInflater.from(parent.context)
             .inflate(R.layout.viewshowmypost,parent,false)
-        return ShowMyPostAdapter.ShowMyPostViewHolder(view)
+        return ShowMyPostViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ShowMyPostViewHolder, position: Int) {
 
-        val blog=lstmyblogs[position]
+        var blog=lstmyblogs[position]
         holder.tvtitle.text=blog.title
         blog.image?.let {
 
@@ -54,14 +55,14 @@ class ShowMyPostAdapter(
 
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Delete Student")
-            builder.setMessage("Are You Sure You Want To Delete  ${blog.userID?.username} ?")
+            builder.setMessage("Are You Sure You Want To Delete  ${blog.userID} ?")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
             builder.setPositiveButton("Yes") { _, _ ->
 
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
                         val postRepository = PostRepository()
-                        val response = postRepository.deleteblog(blog?._id!!,blog.userID?._id!!)
+                        val response = postRepository.deleteblog(blog?._id!!,blog.userID!!)
                         if (response.success == true) {
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(
@@ -96,6 +97,9 @@ class ShowMyPostAdapter(
             val alertDialog: AlertDialog = builder.create()
             alertDialog.setCancelable(false)
             alertDialog.show()
+        }
+        holder.edit.setOnClickListener {
+
         }
 
     }

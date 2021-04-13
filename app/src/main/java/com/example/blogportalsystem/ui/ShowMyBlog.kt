@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.adapter.ShowMyPostAdapter
+import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.repository.PostRepository
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
@@ -16,10 +17,12 @@ import kotlinx.coroutines.withContext
 
 class ShowMyBlog : AppCompatActivity() {
     private lateinit var recyclerViewshow:RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_my_blog)
-        recyclerViewshow=findViewById(R.id.recyclerViewshow)
+        recyclerViewshow=findViewById(R.id.recyclerViewshow);
+
         showmypost()
 
     }
@@ -27,17 +30,19 @@ class ShowMyBlog : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val blogrepository= PostRepository()
-                val responce=blogrepository.getmypost()
-                if(responce.success==true){
-                    val lstblog = responce.data
+                val response=blogrepository.getmypost()
+                if(response.success==true){
+                    val lstblog =response.data
                     withContext(Dispatchers.Main){
-                        recyclerViewshow.adapter = ShowMyPostAdapter(this@ShowMyBlog,lstblog!!)
-                        recyclerView.layoutManager = LinearLayoutManager(this@ShowMyBlog)
+
+                        recyclerViewshow.adapter = ShowMyPostAdapter(this@ShowMyBlog,response.data as MutableList<Post>)
+                        recyclerViewshow.layoutManager = LinearLayoutManager(this@ShowMyBlog)
+//                        Toast.makeText(this@ShowMyBlog, "$lstblog", Toast.LENGTH_SHORT).show()
                     }
                 }
                 else{
                     withContext(Dispatchers.Main){
-                        Toast.makeText(this@ShowMyBlog, "${responce.success}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ShowMyBlog, "${response.success}", Toast.LENGTH_SHORT).show()
                     }
                 }
 

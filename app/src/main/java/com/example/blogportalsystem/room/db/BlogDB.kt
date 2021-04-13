@@ -10,7 +10,7 @@ import com.example.blogportalsystem.room.dao.PostDao
 
 @Database(
     entities = [(Post::class), (PostWithUser::class)],
-    version = 3
+    version = 4
 )
 abstract class BlogDB:RoomDatabase() {
          abstract fun getPostDAO() : PostDao

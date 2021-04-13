@@ -9,7 +9,7 @@ import retrofit2.http.*
 
 interface BlogAPI {
 
-    @POST("blog/insert")
+    @POST("android/blogs/insert")
     suspend fun addblog(
         @Header("Authorization") token : String,
         @Body blog : Post

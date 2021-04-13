@@ -34,7 +34,8 @@ class AddPostActivity : AppCompatActivity() {
     private lateinit var spinner:Spinner
     private lateinit var btnAdd:Button
     private var itemselected=""
-    private val catagories= arrayOf("IT","Health","Mass communication","Personal development","Social")
+    private val catagories= arrayOf("IT","Social","Personal development","Science and technology",
+    "Astrology","Political")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_post)
@@ -68,12 +69,10 @@ class AddPostActivity : AppCompatActivity() {
     fun AddBlog(){
         val title=etTitle.text.toString()
         val description=etdescription.text.toString()
-
         val categoryID=itemselected
         var post= Post(title=title,description = description,categoryID = categoryID)
         CoroutineScope(Dispatchers.IO).launch {
             try {
-
 
                 val blogrepository = PostRepository()
                 val response = blogrepository.addBlog(post)
@@ -84,15 +83,12 @@ class AddPostActivity : AppCompatActivity() {
                             "Post inserted successfully!!",
                             Toast.LENGTH_SHORT
                         ).show()
+                        startActivity(Intent(this@AddPostActivity,DashboardActivity::class.java))
                     }
                 }
-//            BlogDB
-//                .getInstance(this@AddPostActivity)
-//                .getPostDAO()
-//                .insertPost(post)
-
-                // Switch to main thread
-
+                else{
+                    Toast.makeText(this@AddPostActivity, "${response.message}", Toast.LENGTH_SHORT).show()
+                }
             }
             catch (e:Exception){
                 Toast.makeText(this@AddPostActivity, "$e", Toast.LENGTH_SHORT).show()

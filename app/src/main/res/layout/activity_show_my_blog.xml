@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/linearLayout1"
     android:orientation="vertical"
     tools:context=".ui.ShowMyBlog">
     <TextView
@@ -15,6 +16,7 @@
         android:textColor="#0280B8"
         android:text="Show Post"
         android:layout_marginBottom="10dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
