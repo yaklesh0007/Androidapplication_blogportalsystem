@@ -7,6 +7,7 @@ import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.response.AddblogResponce
 import com.example.blogportalsystem.response.GetBlogResponse
 import com.example.blogportalsystem.response.getmyblogResponce
+import okhttp3.MultipartBody
 
 class PostRepository :MyApiRequest(){
     private val blogAPI=ServiceBuilder.buildService(BlogAPI::class.java)
@@ -38,6 +39,11 @@ class PostRepository :MyApiRequest(){
             blogAPI.getmypost(
                 ServiceBuilder.token!!
             )
+        }
+    }
+    suspend fun uploadImage(id: String, body: MultipartBody.Part):AddblogResponce{
+        return apiRequest {
+            blogAPI.uploadImage(ServiceBuilder.token!!,id,body)
         }
     }
 }
