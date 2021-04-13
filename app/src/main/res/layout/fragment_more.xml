@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +9,10 @@
     android:gravity="center"
     android:background="#fff"
     tools:context=".fragments.MoreFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,31 +21,39 @@
 
 
     <Button
+        android:textAlignment="textStart"
         android:layout_width="match_parent"
         android:id="@+id/btnMap"
         android:layout_height="wrap_content"
        android:drawableEnd="@drawable/location"
+        android:background="#fff"
         android:text="Show location in Map"/>
     <Button
+        android:textAlignment="textStart"
         android:layout_width="match_parent"
         android:id="@+id/btnshowmypost"
+        android:background="#fff"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_baseline_whatshot_24"
         android:text="My post"/>
     <Button
         android:layout_width="match_parent"
         android:id="@+id/btnaddpost"
+        android:background="#fff"
         android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/plus"
+        android:drawableRight="@drawable/plus"
+        android:textAlignment="textStart"
         android:text="Add post"/>
 
     <Button
         android:layout_width="match_parent"
         android:id="@+id/btnlogout"
+        android:textAlignment="textStart"
+        android:background="#fff"
         android:drawableEnd="@drawable/logout"
         android:layout_height="wrap_content"
         android:text="logout"/>
 
+    </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

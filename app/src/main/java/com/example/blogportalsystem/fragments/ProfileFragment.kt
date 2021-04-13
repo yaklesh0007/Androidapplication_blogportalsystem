@@ -76,7 +76,7 @@ class ProfileFragment : Fragment() {
                 loadPopUpMenu()
 //            uploadImage()
         }
-        showmypost()
+
         return view
     }
 
@@ -114,34 +114,7 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-    private fun showmypost(){
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val blogrepository=PostRepository()
-                val responce=blogrepository.getmypost()
-                if(responce.success==true){
-                    val lstblog = responce.data
-                    withContext(Dispatchers.Main){
-                        recyclerViewshow.adapter = ShowMyPostAdapter(context!!,lstblog!!)
-                        recyclerView.layoutManager = LinearLayoutManager(context)
-                    }
-                }
-                else{
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(context, "${responce.success}", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
-            }
-            catch (ex:Exception){
-                withContext(Dispatchers.Main){
-                    Toast.makeText(context, "$ex", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-        }
-
-    }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
