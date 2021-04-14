@@ -17,8 +17,14 @@ import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Like
 import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.model.PostWithUser
+import com.example.blogportalsystem.repository.LikeRepository
 import com.example.blogportalsystem.ui.UpdatePostActivity
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class HomeAdapter(
     val context:Context,
@@ -77,7 +83,24 @@ class HomeAdapter(
         holder.imageview.setOnClickListener {
             Toast.makeText(context, "${blog.image}", Toast.LENGTH_SHORT).show()
         }
-
+        holder.love.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val likeRepositor=LikeRepository()
+                    val responce=likeRepositor.addlike(blog._id)
+                    if(responce.success==true){
+                        withContext(Dispatchers.Main){
+                            Toast.makeText(context, "${responce.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                catch (e:Exception){
+                  withContext(Dispatchers.Main){
+                      Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+                  }
+                }
+            }
+        }
 
 
     }
