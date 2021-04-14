@@ -35,7 +35,4 @@ data class Reply(
     val createdAT:Date?=null,
     val updatedAT:Date?=null
 )
-@Entity
-data class Like(
-    val LikedBy:String?=null
-)
+

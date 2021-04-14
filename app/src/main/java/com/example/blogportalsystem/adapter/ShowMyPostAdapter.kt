@@ -56,7 +56,7 @@ class ShowMyPostAdapter(
         holder.delete.setOnClickListener {
 
             val builder = AlertDialog.Builder(context)
-            builder.setTitle("Delete Student")
+            builder.setTitle("Delete Blog")
             builder.setMessage("Are You Sure You Want To Delete  ${blog.userID} ?")
             builder.setIcon(android.R.drawable.ic_dialog_alert)
             builder.setPositiveButton("Yes") { _, _ ->
