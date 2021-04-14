@@ -2,6 +2,7 @@ package com.example.blogportalsystem.api
 
 import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.response.AddblogResponce
+import com.example.blogportalsystem.response.DeleteblogResponce
 import com.example.blogportalsystem.response.GetBlogResponse
 import com.example.blogportalsystem.response.getmyblogResponce
 import okhttp3.MultipartBody
@@ -24,9 +25,9 @@ interface BlogAPI {
     @DELETE("post/delete/{id}/{userID}")
     suspend fun deletepost(
         @Header("Authorization")token: String,
-        @Header(value = "id")id:String,
-        @Header(value = "userID")userID:String
-    ): Response<getmyblogResponce>
+        @Path(value = "id")id:String,
+        @Path(value = "userID")userID:String
+    ): Response<DeleteblogResponce>
 
     @GET("showmypost")
     suspend fun getmypost(

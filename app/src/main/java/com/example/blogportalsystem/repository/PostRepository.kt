@@ -5,6 +5,7 @@ import com.example.blogportalsystem.api.MyApiRequest
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.response.AddblogResponce
+import com.example.blogportalsystem.response.DeleteblogResponce
 import com.example.blogportalsystem.response.GetBlogResponse
 import com.example.blogportalsystem.response.getmyblogResponce
 import okhttp3.MultipartBody
@@ -27,7 +28,7 @@ class PostRepository :MyApiRequest(){
             )
         }
     }
-    suspend fun deleteblog(id:String,userID:String):getmyblogResponce{
+    suspend fun deleteblog(id:String,userID:String): DeleteblogResponce {
         return apiRequest {
             blogAPI.deletepost(
                 ServiceBuilder.token!!,id,userID

@@ -28,7 +28,7 @@ class HomeAdapter(
         val TvLikes: TextView
         val TvComments:TextView
         val profile_image:CircleImageView
-        val imageSetting: ImageView
+        val imageSetting: TextView
         val imageview: ImageView
         val love:Button
         val btncomment:Button
@@ -71,6 +71,7 @@ class HomeAdapter(
                 .load(ServiceBuilder.loadImagePath() + it)
                 .into(holder.profile_image)
         }
+
 
     }
 

@@ -63,6 +63,7 @@ class ShowMyPostAdapter(
                     try {
                         val postRepository = PostRepository()
                         val response = postRepository.deleteblog(blog?._id!!,blog.userID!!)
+
                         if (response.success == true) {
                             withContext(Dispatchers.Main) {
                                 Toast.makeText(

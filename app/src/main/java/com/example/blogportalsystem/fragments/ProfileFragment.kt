@@ -26,6 +26,7 @@ import com.example.blogportalsystem.adapter.ShowMyPostAdapter
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.repository.PostRepository
 import com.example.blogportalsystem.repository.UserRepository
+import com.example.blogportalsystem.ui.UpdateProfileActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -75,6 +76,9 @@ class ProfileFragment : Fragment() {
         ImgProfile.setOnClickListener {
                 loadPopUpMenu()
 //            uploadImage()
+        }
+        BtnUpdateProfile.setOnClickListener {
+            startActivity(Intent(context,UpdateProfileActivity::class.java))
         }
 
         return view
