@@ -2,6 +2,7 @@ package com.example.blogportalsystem.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.model.PostWithUser
 import com.example.blogportalsystem.repository.PostRepository
+import com.example.blogportalsystem.ui.UpdatePostActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -100,7 +102,13 @@ class ShowMyPostAdapter(
             alertDialog.show()
         }
         holder.edit.setOnClickListener {
-
+            val intent = Intent(context, UpdatePostActivity::class.java);
+            intent.putExtra("id",blog._id);
+            intent.putExtra("title",blog.title);
+            intent.putExtra("description",blog.description)
+            intent.putExtra("userID",blog.userID)
+            intent.putExtra("category",blog.categoryID)
+            context.startActivity(intent);
         }
 
     }

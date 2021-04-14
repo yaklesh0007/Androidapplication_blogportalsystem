@@ -1,10 +1,8 @@
 package com.example.blogportalsystem.api
 
 import com.example.blogportalsystem.model.Post
-import com.example.blogportalsystem.response.AddblogResponce
-import com.example.blogportalsystem.response.DeleteblogResponce
-import com.example.blogportalsystem.response.GetBlogResponse
-import com.example.blogportalsystem.response.getmyblogResponce
+import com.example.blogportalsystem.model.User
+import com.example.blogportalsystem.response.*
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
@@ -41,4 +39,11 @@ interface BlogAPI {
         @Path("id")id: String,
         @Part file: MultipartBody.Part
     ):Response<AddblogResponce>
+
+    @PUT("post/update/{id}")
+    suspend fun blogupdate(
+        @Header("Authorization")token:String,
+        @Body blog: Post,
+        @Path("id")id:String
+    ):Response<UpdateBlogResponce>
 }

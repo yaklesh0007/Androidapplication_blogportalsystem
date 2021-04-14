@@ -4,10 +4,8 @@ import com.example.blogportalsystem.api.BlogAPI
 import com.example.blogportalsystem.api.MyApiRequest
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Post
-import com.example.blogportalsystem.response.AddblogResponce
-import com.example.blogportalsystem.response.DeleteblogResponce
-import com.example.blogportalsystem.response.GetBlogResponse
-import com.example.blogportalsystem.response.getmyblogResponce
+import com.example.blogportalsystem.model.User
+import com.example.blogportalsystem.response.*
 import okhttp3.MultipartBody
 
 class PostRepository :MyApiRequest(){
@@ -45,6 +43,12 @@ class PostRepository :MyApiRequest(){
     suspend fun uploadImage(id: String, body: MultipartBody.Part):AddblogResponce{
         return apiRequest {
             blogAPI.uploadImage(ServiceBuilder.token!!,id,body)
+        }
+    }
+
+    suspend fun blogupdate(blog: Post,id:String): UpdateBlogResponce {
+        return apiRequest {
+            blogAPI.blogupdate(ServiceBuilder.token!!,blog,id)
         }
     }
 }
