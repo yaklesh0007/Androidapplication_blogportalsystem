@@ -20,19 +20,5 @@ data class Post(
 //    val comments:ArrayList<Comment>,
     val createdAT:String?=null,
     val updatedAT:String?=null
-){
-
-
-}
-
-@Entity
-data class Reply(
-    @PrimaryKey
-    val _id: String,
-    val replyBody:String?=null,
-    val userID: String?=null,
-    val commentID:String?=null,
-    val createdAT:Date?=null,
-    val updatedAT:Date?=null
 )
 
