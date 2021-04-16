@@ -34,16 +34,12 @@ class ShowMyPostAdapter(
         var edit:ImageView=view.findViewById(R.id.edit)
         var delete:ImageView=view.findViewById(R.id.delete)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMyPostViewHolder {
-
         var view= LayoutInflater.from(parent.context)
             .inflate(R.layout.viewshowmypost,parent,false)
         return ShowMyPostViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: ShowMyPostViewHolder, position: Int) {
-
         var blog=lstmyblogs[position]
         holder.tvtitle.text=blog.title
         blog.image?.let {
@@ -52,7 +48,6 @@ class ShowMyPostAdapter(
                 .load(ServiceBuilder.loadImagePath() + it)
                 .into(holder.image)
         }
-
         holder.delete.setOnClickListener {
 
             val builder = AlertDialog.Builder(context)

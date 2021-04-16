@@ -11,9 +11,10 @@ class LikeRepository: MyApiRequest(){
 
     suspend fun addlike(postID:String):AddlikeResponce{
         return apiRequest {
-            LikeAPI.getblog(
+            LikeAPI.insertlike(
                 ServiceBuilder.token!!,postID
             )
         }
     }
+
 }

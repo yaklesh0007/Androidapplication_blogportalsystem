@@ -25,6 +25,7 @@
             android:layout_gravity="end|bottom"
             android:src="@drawable/plus"
             android:layout_margin="16dp" />
+        
     </LinearLayout>
 
 </ScrollView>

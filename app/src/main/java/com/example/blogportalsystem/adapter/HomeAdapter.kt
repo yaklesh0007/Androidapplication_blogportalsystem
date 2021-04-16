@@ -9,16 +9,12 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.datastore.preferences.protobuf.Empty
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
-import com.example.blogportalsystem.model.Like
-import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.model.PostWithUser
 import com.example.blogportalsystem.repository.LikeRepository
-import com.example.blogportalsystem.ui.UpdatePostActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

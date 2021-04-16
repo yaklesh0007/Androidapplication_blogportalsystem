@@ -13,5 +13,5 @@ interface PostDao {
     suspend fun insertPost(bloglist:List<PostWithUser> )
 
     @Query("select * from Post")
-    suspend fun getPost():List<Post>
+    suspend fun getPost():List<PostWithUser>
 }

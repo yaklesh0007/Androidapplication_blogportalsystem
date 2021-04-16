@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
-import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.User
 import com.example.blogportalsystem.repository.UserRepository
 import com.google.android.material.snackbar.Snackbar

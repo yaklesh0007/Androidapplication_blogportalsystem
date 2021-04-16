@@ -17,14 +17,11 @@ import kotlinx.coroutines.withContext
 
 class ShowMyBlog : AppCompatActivity() {
     private lateinit var recyclerViewshow:RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_my_blog)
         recyclerViewshow=findViewById(R.id.recyclerViewshow);
-
         showmypost()
-
     }
     private fun showmypost(){
         CoroutineScope(Dispatchers.IO).launch {

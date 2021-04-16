@@ -1,18 +1,20 @@
 package com.example.blogportalsystem.fragments
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.adapter.HomeAdapter
-import com.example.blogportalsystem.model.Post
 import com.example.blogportalsystem.repository.PostRepository
 import com.example.blogportalsystem.room.db.BlogDB
 import com.example.blogportalsystem.ui.AddPostActivity
@@ -37,9 +39,15 @@ class HomeFragment : Fragment() {
         val adapter=HomeAdapter(context!!, emptyList())
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
         recyclerView.adapter=adapter
-        getallblog()
+
         FabBtnAdd.setOnClickListener {
             startActivity(Intent(activity,AddPostActivity::class.java))
+        }
+        if (checkNetwork(context!!)) {
+            getallblog()
+        }
+        else if (!checkNetwork(context!!)) {
+            getdatafromroom()
         }
         return view
     }
@@ -75,5 +83,32 @@ class HomeFragment : Fragment() {
             }
         }
     }
+    private fun checkNetwork(context: Context): Boolean {
+        val connManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+
+        return true
+    }
+    private fun getdatafromroom(){
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val  lsblog = BlogDB
+                .getInstance(context!!)
+                .getPostDAO()
+                .getPost()
+                withContext(Dispatchers.Main){
+                    recyclerView.adapter = HomeAdapter(context!!,lsblog)
+                    recyclerView.layoutManager= LinearLayoutManager(context)
+                }
+
+            }
+            catch (err:Exception){
+                withContext(Dispatchers.Main){
+                    Toast.makeText(context, "$err", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
 
 }

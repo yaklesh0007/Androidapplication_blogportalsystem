@@ -9,6 +9,7 @@ object ServiceBuilder {
 //        "http://localhost:90/"
 //    "http://10.0.2.2:90/"
         "http://192.168.137.13:90/"
+//    "http://192.168.137.214:90/"
     var token: String? = null
     private val okHttp = OkHttpClient.Builder()
     private val retrofitBuilder = Retrofit.Builder()

@@ -1,10 +1,14 @@
 package com.example.blogportalsystem.ui
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.example.blogportalsystem.Notification.NotificationChannel
 import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
 //import com.example.blogportalsystem.db.UserDB
@@ -64,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                     finish()
+                    showHighPriorityNotification()
                 } else {
                     withContext(Dispatchers.Main) {
                         val snack =
@@ -110,5 +115,22 @@ class MainActivity : AppCompatActivity() {
 
         edtemail.setText("$email")
         edtpassword.setText("$password")
+    }
+    private fun showHighPriorityNotification() {
+
+        val notificationManager = NotificationManagerCompat.from(this)
+
+        val notificationChannels = NotificationChannel(this)
+        notificationChannels.createNotificationChannels()
+
+        val notification = NotificationCompat.Builder(this, notificationChannels.CHANNEL_1)
+            .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
+            .setContentTitle("Login Success")
+            .setContentText("${edtemail.text} login successfully")
+            .setColor(Color.BLUE)
+            .build()
+
+        notificationManager.notify(1, notification)
+
     }
 }

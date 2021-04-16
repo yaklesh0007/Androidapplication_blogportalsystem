@@ -9,7 +9,7 @@ import retrofit2.http.Path
 
 interface LikeAPI {
     @GET("like/{postID}")
-    suspend fun getblog(
+    suspend fun insertlike(
         @Header("Authorization")token:String,
         @Path(value = "postID")postID:String,
     ): Response<AddlikeResponce>
