@@ -24,4 +24,7 @@ private lateinit var BtnwearNotification:Button
         // Enables Always-on
         setAmbientEnabled()
     }
+    private fun loaduser(){
+
+    }
 }
