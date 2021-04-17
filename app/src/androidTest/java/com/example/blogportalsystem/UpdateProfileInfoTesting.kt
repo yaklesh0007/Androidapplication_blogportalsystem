@@ -1,58 +1,52 @@
 package com.example.blogportalsystem
 
 import androidx.test.espresso.Espresso.onView
+
 import androidx.test.espresso.action.ViewActions.*
+
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isChecked
-import androidx.test.espresso.matcher.ViewMatchers.withId
+
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
-import com.example.blogportalsystem.ui.SignUpActivity
+
+import com.example.blogportalsystem.ui.UpdateProfileActivity
+
 import org.hamcrest.CoreMatchers.not
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
-
 @LargeTest
 @RunWith(JUnit4::class)
-class InstrumentedtestingForRegisteruser {
+class UpdateProfileInfoTesting {
     @get:Rule
-    val testRule= ActivityScenarioRule(SignUpActivity::class.java)
+    val testRule= ActivityScenarioRule(UpdateProfileActivity::class.java)
     @Test
-    fun checkforResgister(){
-        onView(withId(R.id.edtfullname))
+    fun instrutestforprofileupdate(){
+        onView(withId(R.id.Etupdatefullname))
             .perform(typeText("test2131"))
             .perform(closeSoftKeyboard())
-       onView(withId(R.id.edtemail))
-            .perform(typeText("Test22@gmail.com"))
+        Thread.sleep(2000)
+        onView(withId(R.id.EtupdatePhone))
+            .perform(typeText("9831200112"))
             .perform(closeSoftKeyboard())
         Thread.sleep(2000)
-       onView(withId(R.id.edtpassword))
-            .perform(typeText("aklesh"))
-            .perform(closeSoftKeyboard())
-        Thread.sleep(2000)
-        onView(withId(R.id.edtphone))
-            .perform(typeText("1213131312"))
-            .perform(closeSoftKeyboard())
-        Thread.sleep(2000)
-        onView(withId(R.id.RdoMale))
+        onView(withId(R.id.UpdateRdoMale))
             .perform(click())
             .check(matches(isChecked()))
-        onView(withId(R.id.RdoFemale))
+        onView(withId(R.id.UpdateRdoFemale))
             .check(matches(not(isChecked())))
-        onView(withId(R.id.RdoOther))
+        onView(withId(R.id.UpdateRdoOther))
             .check(matches(not(isChecked())))
-
-        onView(withId(R.id.btnSignup))
+        Thread.sleep(2000)
+        onView(withId(R.id.btnUpdateProfileinfo))
             .perform(click())
         Thread.sleep(2000)
 
+        onView(withId(R.id.FabBtnAdd))
+            .check(matches(isDisplayed()))
 
     }
-
-
-
-
 }
