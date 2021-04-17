@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.UpdateProfileActivity"></activity>
+        <activity android:name=".ui.CommentActivity"></activity>
+        <activity android:name=".ui.UpdateProfileActivity" />
         <activity android:name=".ui.ShowMyBlog" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
