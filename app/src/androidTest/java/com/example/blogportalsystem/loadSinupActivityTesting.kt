@@ -26,7 +26,7 @@ class loadSinupActivityTesting {
             .perform(click())
 
         onView(withId(R.id.TvSignUpTitle))
-            .check(matches(isDisplayed()))
+//            .check(matches(isDisplayed()))
             .check(matches(withText("Sign up Here!!")))
         Thread.sleep(2000)
     }
