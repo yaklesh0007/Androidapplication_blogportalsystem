@@ -33,6 +33,7 @@ class ShowMyPostAdapter(
         var image:ImageView=view.findViewById(R.id.image)
         var edit:ImageView=view.findViewById(R.id.edit)
         var delete:ImageView=view.findViewById(R.id.delete)
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShowMyPostViewHolder {
         var view= LayoutInflater.from(parent.context)
