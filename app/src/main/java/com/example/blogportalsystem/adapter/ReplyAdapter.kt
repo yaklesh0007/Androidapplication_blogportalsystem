@@ -15,6 +15,7 @@ import com.example.blogportalsystem.api.ServiceBuilder
 
 import com.example.blogportalsystem.model.ReplyWithUser
 import com.example.blogportalsystem.repository.PostRepository
+import com.example.blogportalsystem.repository.ReplyRepository
 import com.example.blogportalsystem.ui.UpdatePostActivity
 import com.example.blogportalsystem.ui.UpdateReplyActivity
 import de.hdodenhof.circleimageview.CircleImageView
@@ -40,7 +41,7 @@ class ReplyAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyViewHolder {
         val view= LayoutInflater.from(parent.context)
             .inflate(R.layout.comment,parent,false)
-        return ReplyAdapter.ReplyViewHolder(view)
+        return ReplyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ReplyViewHolder, position: Int) {
@@ -61,53 +62,53 @@ class ReplyAdapter(
                 .into(holder.profile_image)
         }
 
-//        holder.Actiondelete.setOnClickListener {
-//            val builder = AlertDialog.Builder(context)
-//            builder.setTitle("Delete Reply")
-//            builder.setMessage("Are You Sure You Want To Delete  ${reply.userID?.username} ?")
-//            builder.setIcon(android.R.drawable.ic_dialog_alert)
-//            builder.setPositiveButton("Yes") { _, _ ->
-//
-//                CoroutineScope(Dispatchers.IO).launch {
-//                    try {
-//                        val postRepository = Reply()
-//                        val response = postRepository.deleteblog(reply?._id!!,reply.userID!!)
-//
-//                        if (response.success == true) {
-//                            withContext(Dispatchers.Main) {
-//                                Toast.makeText(
-//                                    context,
-//                                    "blog Deleted",
-//                                    Toast.LENGTH_SHORT
-//                                )
-//                                    .show()
-//                            }
-//                        }
-//                        withContext(Dispatchers.Main) {
-//                            lsreply.remove(reply)
-//                            notifyDataSetChanged()
-//                        }
-//
-//                    }catch (ex: Exception){
-//                        withContext(Dispatchers.Main){
-//                            Toast.makeText(context,
-//                                ex.toString(),
-//                                Toast.LENGTH_SHORT)
-//                                .show()
-//                        }
-//                    }
-//                }
-//            }
-//
-//
-//            builder.setNegativeButton("No") { _, _ ->
-//                Toast.makeText(context, "Action Cancelled", Toast.LENGTH_SHORT).show()
-//            }
-//
-//            val alertDialog: AlertDialog = builder.create()
-//            alertDialog.setCancelable(false)
-//            alertDialog.show()
-//        }
+        holder.Actiondelete.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Delete Reply")
+            builder.setMessage("Are You Sure You Want To Delete  ${reply.userID?.username} ?")
+            builder.setIcon(android.R.drawable.ic_dialog_alert)
+            builder.setPositiveButton("Yes") { _, _ ->
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        val replyRepository = ReplyRepository()
+                        val response = replyRepository.deletereply(reply?._id!!,reply.userID?._id!!)
+
+                        if (response.success == true) {
+                            withContext(Dispatchers.Main) {
+                                Toast.makeText(
+                                    context,
+                                    "Reply Deleted",
+                                    Toast.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                        }
+                        withContext(Dispatchers.Main) {
+                            lsreply.remove(reply)
+                            notifyDataSetChanged()
+                        }
+
+                    }catch (ex: Exception){
+                        withContext(Dispatchers.Main){
+                            Toast.makeText(context,
+                                ex.toString(),
+                                Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                }
+            }
+
+
+            builder.setNegativeButton("No") { _, _ ->
+                Toast.makeText(context, "Action Cancelled", Toast.LENGTH_SHORT).show()
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+        }
     }
 
     override fun getItemCount(): Int {

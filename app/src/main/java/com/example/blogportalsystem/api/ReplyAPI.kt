@@ -19,20 +19,20 @@ interface ReplyAPI {
         @Header("Authorization") token : String,
         @Part("id")id:String,
         @Body reply: Reply
-    ): Response<AddCommentResponce>
+    ): Response<AddReplyResponce>
 
     @GET("reply/single/{id}")
     suspend fun getreplysingle(
         @Header("Authorization") token:String,
         @Part("id")id:String,
-    ): Response<AddCommentResponce>
+    ): Response<AddReplyResponce>
 
     @DELETE("reply/delete/{id}/{userID}")
     suspend fun deleteReply(
         @Header("Authorization")token:String,
         @Part("id")id:String,
         @Part("userID")userID:String
-    )
+    ):Response<AddReplyResponce>
 
     @GET("reply/{commentID}")
     suspend fun getReplys(

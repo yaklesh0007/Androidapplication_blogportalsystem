@@ -6,8 +6,6 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -16,9 +14,8 @@ import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.CommentWithUser
 import com.example.blogportalsystem.repository.CommentRepository
-import com.example.blogportalsystem.repository.PostRepository
+import com.example.blogportalsystem.ui.ShowReplyActivity
 import com.example.blogportalsystem.ui.UpdateCommentActivity
-import com.example.blogportalsystem.ui.UpdatePostActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -42,7 +39,7 @@ class CommentAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val view= LayoutInflater.from(parent.context)
             .inflate(R.layout.comment,parent,false)
-        return CommentAdapter.CommentViewHolder(view)
+        return CommentViewHolder(view)
 
     }
 
@@ -62,6 +59,16 @@ class CommentAdapter(
             Glide.with(context!!)
                 .load(ServiceBuilder.loadImagePath() + it)
                 .into(holder.profile_image)
+        }
+        holder.TvComment.setOnClickListener {
+            val intent = Intent(context, ShowReplyActivity::class.java);
+            intent.putExtra("id",comment._id);
+            intent.putExtra("commentBody",comment.commentBody);
+            intent.putExtra("userID",comment.userID?._id)
+            intent.putExtra("userimage",comment.userID?.image)
+            intent.putExtra("username",comment.userID?.username)
+
+            context.startActivity(intent);
         }
         holder.Actiondelete.setOnClickListener {
             val builder = AlertDialog.Builder(context)
