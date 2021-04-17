@@ -17,26 +17,26 @@ interface ReplyAPI {
     @PUT("reply/update/{id}")
     suspend fun updateReply(
         @Header("Authorization") token : String,
-        @Part("id")id:String,
+        @Path("id")id:String,
         @Body reply: Reply
     ): Response<AddReplyResponce>
 
     @GET("reply/single/{id}")
     suspend fun getreplysingle(
         @Header("Authorization") token:String,
-        @Part("id")id:String,
+        @Path("id")id:String,
     ): Response<AddReplyResponce>
 
     @DELETE("reply/delete/{id}/{userID}")
     suspend fun deleteReply(
         @Header("Authorization")token:String,
-        @Part("id")id:String,
-        @Part("userID")userID:String
+        @Path("id")id:String,
+        @Path("userID")userID:String
     ):Response<AddReplyResponce>
 
     @GET("reply/{commentID}")
     suspend fun getReplys(
         @Header("Authorization")token:String,
-        @Part("commentID")commentID:String
+        @Path("commentID")commentID:String
     ): Response<GetReplyResponce>
 }

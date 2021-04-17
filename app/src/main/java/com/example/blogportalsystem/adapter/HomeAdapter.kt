@@ -32,26 +32,25 @@ class HomeAdapter(
         val TvUsername: TextView
         val tvtitle: TextView
         val tvdescription: TextView
-        val TvLikes: TextView
-        val TvComments:TextView
+
         val profile_image:CircleImageView
         val imageSetting: TextView
         val imageview: ImageView
         val love:Button
         val btncomment:Button
-        val btndislike:Button
+
         init {
             profile_image=view.findViewById(R.id.profile_image)
             TvUsername=view.findViewById(R.id.TvUsername)
             tvtitle=view.findViewById(R.id.tvtitle)
             tvdescription=view.findViewById(R.id.tvdescription)
-            TvLikes=view.findViewById(R.id.TvLikes)
+
             imageSetting=view.findViewById(R.id.imageSetting)
             imageview=view.findViewById(R.id.imageview)
-            TvComments=view.findViewById(R.id.TvComments)
+
             love=view.findViewById(R.id.love)
             btncomment=view.findViewById(R.id.btncomment)
-            btndislike=view.findViewById(R.id.btndislike)
+
         }
     }
 

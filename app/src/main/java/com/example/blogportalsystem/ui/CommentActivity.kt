@@ -12,6 +12,7 @@ import com.example.blogportalsystem.adapter.CommentAdapter
 import com.example.blogportalsystem.adapter.HomeAdapter
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Comment
+import com.example.blogportalsystem.model.CommentWithUser
 import com.example.blogportalsystem.repository.CommentRepository
 import com.example.blogportalsystem.repository.PostRepository
 import com.example.blogportalsystem.room.db.BlogDB
@@ -52,7 +53,7 @@ class CommentActivity : AppCompatActivity() {
 
         val intent = intent;
         if(intent.extras!=null){
-            val id = intent.getStringExtra("id");
+            val id = intent.getStringExtra("postID");
             val title = intent.getStringExtra("title");
             val description=intent.getStringExtra("description")
             val uid=intent.getStringExtra("userID")
@@ -76,6 +77,7 @@ class CommentActivity : AppCompatActivity() {
             }
             userID="$uid"
             postID="$id"
+            Toast.makeText(this@CommentActivity, "$postID", Toast.LENGTH_SHORT).show()
         }
         showallcomments ()
         btnAddComment.setOnClickListener {
@@ -90,30 +92,28 @@ class CommentActivity : AppCompatActivity() {
     }
     fun showallcomments (){
         CoroutineScope(Dispatchers.IO).launch {
-
             try
             {
                 val commentRepository = CommentRepository()
                 val response = commentRepository.getcomments(postID)
-
                 if (response.success == true){
                     withContext(Dispatchers.Main){
-//                        Toast.makeText(context, "${response.data}", Toast.LENGTH_SHORT).show()
-                        RecyclerViewComment.adapter = CommentAdapter(this@CommentActivity!!,response.data!! as MutableList)
+//                        Toast.makeText(this@CommentActivity, "${response.result}", Toast.LENGTH_LONG).show()
+                        RecyclerViewComment.adapter = CommentAdapter(this@CommentActivity!!,response.result!! as MutableList)
                         RecyclerViewComment.layoutManager= LinearLayoutManager(this@CommentActivity)
                     }
                 }
             }
             catch (e:Exception){
                 withContext(Dispatchers.Main){
-                    Toast.makeText(this@CommentActivity, "$e", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CommentActivity, "$e", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
     private fun addcomment(){
         val cmtbody=EtAddComment.text.toString()
-        val comment= Comment(commentBody =cmtbody,userID = userID,postID = postID )
+        val comment= CommentWithUser(commentBody =cmtbody,postID = postID )
         CoroutineScope(Dispatchers.IO).launch {
 
             try
@@ -129,7 +129,7 @@ class CommentActivity : AppCompatActivity() {
             }
             catch (e:Exception){
                 withContext(Dispatchers.Main){
-                    Toast.makeText(this@CommentActivity, "$e", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CommentActivity, "$e", Toast.LENGTH_LONG).show()
                 }
             }
         }

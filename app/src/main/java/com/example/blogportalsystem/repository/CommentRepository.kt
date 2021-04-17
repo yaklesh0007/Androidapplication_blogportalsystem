@@ -4,6 +4,7 @@ import com.example.blogportalsystem.api.CommentAPI
 import com.example.blogportalsystem.api.MyApiRequest
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.Comment
+import com.example.blogportalsystem.model.CommentWithUser
 import com.example.blogportalsystem.response.AddCommentResponce
 import com.example.blogportalsystem.response.GetCommentResponce
 
@@ -11,7 +12,7 @@ class CommentRepository:MyApiRequest (){
     private val commentAPI =
         ServiceBuilder.buildService(CommentAPI::class.java)
 
-    suspend fun insertComment(comment: Comment): AddCommentResponce {
+    suspend fun insertComment(comment: CommentWithUser): AddCommentResponce {
         return apiRequest {
             commentAPI.addcomment(ServiceBuilder.token!!,comment)
         }
