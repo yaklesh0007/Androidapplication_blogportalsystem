@@ -2,6 +2,10 @@ package com.example.blogportalsystem.ui
 
 import android.content.Intent
 import android.graphics.Color
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,7 +23,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var edtemail: EditText
     private lateinit var edtpassword: EditText
     private lateinit var btnlogin: Button
@@ -27,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var linearLayout: LinearLayout
     private lateinit var chkremember:CheckBox
 
+    private var sensorManager: SensorManager? = null
+    private var sensor: Sensor? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,6 +54,12 @@ class MainActivity : AppCompatActivity() {
             }
             login();
 
+        }
+        if (!checkSensor())
+            return
+        else {
+            sensor = sensorManager?.getDefaultSensor(Sensor.TYPE_LIGHT)
+            sensorManager?.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
         }
 
     }
@@ -132,5 +144,27 @@ class MainActivity : AppCompatActivity() {
 
         notificationManager.notify(1, notification)
 
+    }
+    private fun checkSensor(): Boolean {
+        var flag = true
+        if (sensorManager?.getDefaultSensor(Sensor.TYPE_LIGHT) == null) {
+            flag = false
+        }
+        return flag
+    }
+
+    override fun onSensorChanged(p0: SensorEvent?) {
+        val values = p0!!.values[0]
+        if(values>=6){
+            linearLayout.setBackgroundColor(Color.BLACK);
+
+        }
+        else if(values<=5){
+            linearLayout.setBackgroundColor(Color.WHITE);
+        }
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        TODO("Not yet implemented")
     }
 }
