@@ -2,6 +2,8 @@ package com.example.blogportalsystem
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
@@ -33,6 +35,8 @@ class InsrumentedTestingForUser {
             .perform(click())
         Thread.sleep(2000)
 
+        onView(withId(R.id.tabLayout))
+            .check(matches(isDisplayed()))
     }
 
 

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="30dp"
         android:id="@+id/linearLayout">
@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign up Here!!"
+            android:id="@+id/TvSignUpTitle"
             android:textSize="30sp"
             android:textStyle="bold"
             android:textColor="#06A6BA"

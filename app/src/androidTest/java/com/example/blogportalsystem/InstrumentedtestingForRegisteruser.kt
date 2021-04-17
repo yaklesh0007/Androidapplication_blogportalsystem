@@ -48,6 +48,8 @@ class InstrumentedtestingForRegisteruser {
         onView(withId(R.id.btnlogin))
             .perform(click())
         Thread.sleep(2000)
+
+
     }
 
 

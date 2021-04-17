@@ -43,7 +43,7 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var RdoOther: RadioButton
     private lateinit var btnSignup: Button
     var userType: String = "normaluser"
-
+    private lateinit var TvSignUpTitle:TextView
     private lateinit var linearLayout: LinearLayout
     var gender: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +58,7 @@ class SignUpActivity : AppCompatActivity() {
         RdoMale = findViewById(R.id.RdoMale)
         RdoFemale = findViewById(R.id.RdoFemale)
         RdoOther = findViewById(R.id.RdoOther)
-
+        TvSignUpTitle=findViewById(R.id.TvSignUpTitle)
         btnSignup = findViewById(R.id.btnSignup)
         linearLayout = findViewById(R.id.linearLayout)
 
@@ -129,6 +129,8 @@ class SignUpActivity : AppCompatActivity() {
                             snackbar.dismiss()
 
                         })
+                        startActivity(Intent(this@SignUpActivity,MainActivity::class.java))
+                        finish()
                     }
                 }
                 else{
