@@ -28,6 +28,11 @@ class ReplyRepository: MyApiRequest() {
             replyAPI.getReplys(ServiceBuilder.token!!,id)
         }
     }
-
+    suspend fun updatereply(id:String,body:Reply):AddReplyResponce
+    {
+        return apiRequest {
+            replyAPI.updateReply(ServiceBuilder.token!!,id,body)
+        }
+    }
 
 }

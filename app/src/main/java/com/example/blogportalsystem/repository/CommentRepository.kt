@@ -27,5 +27,10 @@ class CommentRepository:MyApiRequest (){
             commentAPI.getComments(ServiceBuilder.token!!,id)
         }
     }
+    suspend fun updatecomment(id:String,body:Comment):AddCommentResponce{
+        return apiRequest {
+            commentAPI.updatecomment(ServiceBuilder.token!!,id,body)
+        }
+    }
 
 }
