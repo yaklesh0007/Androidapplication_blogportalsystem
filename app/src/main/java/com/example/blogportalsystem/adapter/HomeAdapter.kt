@@ -15,6 +15,8 @@ import com.example.blogportalsystem.R
 import com.example.blogportalsystem.api.ServiceBuilder
 import com.example.blogportalsystem.model.PostWithUser
 import com.example.blogportalsystem.repository.LikeRepository
+import com.example.blogportalsystem.ui.CommentActivity
+import com.example.blogportalsystem.ui.UpdateReplyActivity
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -97,7 +99,19 @@ class HomeAdapter(
                 }
             }
         }
+        holder.btncomment.setOnClickListener {
+            val intent = Intent(context, CommentActivity::class.java);
+            intent.putExtra("postID",blog._id);
+            intent.putExtra("username",blog.userID?.username);
+            intent.putExtra("userID",blog.userID?._id)
+            intent.putExtra("userimage",blog.userID?.image)
+            intent.putExtra("title",blog.title)
+            intent.putExtra("description",blog.description)
+            intent.putExtra("image",blog.image)
+            intent.putExtra("category",blog.categoryID)
 
+            context.startActivity(intent);
+        }
 
     }
 

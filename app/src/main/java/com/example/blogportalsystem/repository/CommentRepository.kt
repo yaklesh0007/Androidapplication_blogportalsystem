@@ -15,4 +15,10 @@ class CommentRepository:MyApiRequest (){
         }
     }
 
+    suspend fun deletecomment(id:String, userID:String):AddCommentResponce{
+        return apiRequest {
+            commentAPI.deleteComment(ServiceBuilder.token!!,id,userID)
+        }
+    }
+
 }

@@ -32,7 +32,7 @@ interface CommentAPI {
         @Header("Authorization")token:String,
         @Part("id")id:String,
         @Part("userID")userID:String
-    )
+    ):Response<AddCommentResponce>
 
     @GET("comment/{id}")
     suspend fun getComments(

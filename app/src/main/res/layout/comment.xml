@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="Comment"
             android:layout_marginTop="10dp"
-            android:id="@+id/TvReply"
+            android:id="@+id/TvComment"
             android:layout_weight="2"
             android:textSize="20sp"/>
 
@@ -39,8 +39,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/imageSetting"
-            android:drawableEnd="@drawable/vertimore"
+            android:id="@+id/Actionverit"
+            android:drawableEnd="@drawable/edit_icon"
+            android:layout_marginRight="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/Actiondelete"
+            android:layout_marginLeft="10dp"
+            android:drawableEnd="@drawable/delete_icon"
             />
     </LinearLayout>
 </LinearLayout>

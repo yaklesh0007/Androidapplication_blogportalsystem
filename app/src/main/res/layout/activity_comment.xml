@@ -84,38 +84,53 @@
             android:textAlignment="textEnd"
             android:layout_weight="1"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_favorite_border_24"
-            android:text="Love"
-            android:id="@+id/love"
-            android:background="#fff"
-            android:layout_weight="1"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_chat_bubble_outline_24"
-            android:background="#fff"
-            android:text="Comment"
-            android:layout_weight="1"
-            android:id="@+id/btncomment"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="5dp">-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableStart="@drawable/ic_baseline_favorite_border_24"-->
+<!--            android:text="Love"-->
+<!--            android:id="@+id/love"-->
+<!--            android:background="#fff"-->
+<!--            android:layout_weight="1"-->
+<!--            />-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:drawableStart="@drawable/ic_baseline_chat_bubble_outline_24"-->
+<!--            android:background="#fff"-->
+<!--            android:text="Comment"-->
+<!--            android:layout_weight="1"-->
+<!--            android:id="@+id/btncomment"/>-->
 
-    </LinearLayout>
-        <EditText
+<!--    </LinearLayout>-->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-
-            android:hint="Enter your Comment"
-            android:id="@+id/EtComment"
-            android:background="@drawable/edtextshape"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:id="@+id/EtAddComment"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#2777B6"
+                android:textColor="#fff"
+                android:id="@+id/btnAddComment"
+                android:text="Add"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:textStyle="bold"/>
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
