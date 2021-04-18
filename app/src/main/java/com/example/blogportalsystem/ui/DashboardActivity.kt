@@ -1,9 +1,15 @@
 package com.example.blogportalsystem.ui
 
+import android.content.Context
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
+import android.os.PowerManager
 import android.widget.SearchView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +23,8 @@ import com.example.blogportalsystem.fragments.ProfileFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class DashboardActivity : AppCompatActivity() {
+
+class DashboardActivity : AppCompatActivity(), SensorEventListener {
     private val permissions= arrayOf(
         android.Manifest.permission.CAMERA,
         android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -29,6 +36,8 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var lstFragments:ArrayList<Fragment>
     private lateinit var Searchbox:SearchView
     private lateinit var DasrecyclerView:RecyclerView
+    private lateinit var sensorManager: SensorManager
+    private var sensor: Sensor? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
@@ -43,9 +52,9 @@ class DashboardActivity : AppCompatActivity() {
         }
         loadfragment()
 
-        val adapter= ViewPagerAdapter(lstFragments,supportFragmentManager,lifecycle)
+        val adapter= ViewPagerAdapter(lstFragments, supportFragmentManager, lifecycle)
         viewPager.adapter=adapter
-        TabLayoutMediator(tabLayout,viewPager){tab, position ->
+        TabLayoutMediator(tabLayout, viewPager){ tab, position ->
             tab.text=lstTitle[position]
         }.attach()
 
@@ -53,6 +62,20 @@ class DashboardActivity : AppCompatActivity() {
         tabLayout.getTabAt(1)!!.setIcon(R.drawable.ic_baseline_person_24)
         tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_local_phone_24)
         tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_menu_24)
+
+        if (!checkSensor())
+            return
+        else {
+            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+    private fun checkSensor(): Boolean {
+        var flag = true
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY) == null) {
+            flag = false
+        }
+        return flag
     }
 
     private fun requestPermission() {
@@ -87,6 +110,14 @@ class DashboardActivity : AppCompatActivity() {
         lstFragments.add(AboutFragment())
         lstFragments.add(MoreFragment())
 
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+       
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        TODO("Not yet implemented")
     }
 
 }
