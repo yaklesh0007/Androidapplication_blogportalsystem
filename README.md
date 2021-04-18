@@ -16,9 +16,9 @@ Show profile
 logout
 Update profile image
 Update profile information
-Able to add blog
-Able to update blog
-Able to delete the blog
+add blog
+update blog
+delete the blog
 Get blogs
 like and unlike the post
 add comment on post
