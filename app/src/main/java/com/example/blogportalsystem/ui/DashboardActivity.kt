@@ -9,6 +9,7 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.os.PowerManager
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
@@ -113,7 +114,16 @@ class DashboardActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-       
+        val values = event!!.values[0];
+        if (values <= 1) {
+            val builder = AlertDialog.Builder(this);
+            builder.setTitle("Object seems near")
+            builder.setMessage("Please donot cover the Camera or microphone");
+            builder.setIcon(android.R.drawable.ic_dialog_alert);
+            var alert = builder.create();
+            alert.setCancelable(true);
+            alert.show();
+        }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {

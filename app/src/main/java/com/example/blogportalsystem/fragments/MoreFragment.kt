@@ -91,6 +91,4 @@ private fun logout(){
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
         TODO("Not yet implemented")
     }
-
-
 }
