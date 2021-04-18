@@ -27,7 +27,7 @@ private lateinit var BtnwearNotification:Button
         TvwearUsername=findViewById(R.id.TvwearUsername)
         TvwearEmail=findViewById(R.id.TvwearEmail)
         TvwearGender=findViewById(R.id.TvwearGender)
-        BtnwearNotification=findViewById(R.id.BtnwearNotification)
+//        BtnwearNotification=findViewById(R.id.BtnwearNotification)
         loaduser()
         // Enables Always-on
         setAmbientEnabled()
@@ -53,7 +53,7 @@ private lateinit var BtnwearNotification:Button
                                 .load(ServiceBuilder.loadImagePath() + it)
                                 .into(Imgwearprofile)
                         }
-                        Toast.makeText(this@WearableDashboardActivity, "welcome to ${userData.username}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@WearableDashboardActivity, "welcome to blogportal system dashboard ${userData.username}", Toast.LENGTH_SHORT).show()
 
                     }
                 }

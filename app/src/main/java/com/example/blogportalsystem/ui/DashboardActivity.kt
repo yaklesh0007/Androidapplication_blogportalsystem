@@ -64,20 +64,14 @@ class DashboardActivity : AppCompatActivity(), SensorEventListener {
         tabLayout.getTabAt(2)!!.setIcon(R.drawable.ic_baseline_local_phone_24)
         tabLayout.getTabAt(3)!!.setIcon(R.drawable.ic_baseline_menu_24)
 
-        if (!checkSensor())
-            return
-        else {
-            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
-            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
-        }
+//        if (!checkSensor())
+//            return
+//        else {
+//            sensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
+//            sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+//        }
     }
-    private fun checkSensor(): Boolean {
-        var flag = true
-        if (sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY) == null) {
-            flag = false
-        }
-        return flag
-    }
+//    o8p][
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
@@ -114,20 +108,19 @@ class DashboardActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        val values = event!!.values[0];
-        if (values <= 1) {
-            val builder = AlertDialog.Builder(this);
-            builder.setTitle("Object seems near")
-            builder.setMessage("Please donot cover the Camera or microphone");
-            builder.setIcon(android.R.drawable.ic_dialog_alert);
-            var alert = builder.create();
-            alert.setCancelable(true);
-            alert.show();
-        }
+//        val values = event!!.values[0];
+//        if (values <= 1) {
+//            val builder = AlertDialog.Builder(this);
+//            builder.setTitle("Object seems near")
+//            builder.setMessage("Please donot cover the Camera or microphone");
+//            builder.setIcon(android.R.drawable.ic_dialog_alert);
+//            var alert = builder.create();
+//            alert.setCancelable(true);
+//            alert.show();
+//        }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("Not yet implemented")
     }
 
 }

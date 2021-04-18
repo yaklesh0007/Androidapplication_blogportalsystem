@@ -44,7 +44,7 @@ class UpdateReplyActivity : AppCompatActivity() {
                 EtUpdateReply.error="Reply must not be empty!!"
             }
             else{
-
+                updatereply()
             }
         }
 

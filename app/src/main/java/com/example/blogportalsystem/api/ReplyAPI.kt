@@ -8,7 +8,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface ReplyAPI {
-    @POST("reply/insert")
+    @POST("insert/reply")
     suspend fun addReply(
         @Header("Authorization") token : String,
         @Body reply : Reply

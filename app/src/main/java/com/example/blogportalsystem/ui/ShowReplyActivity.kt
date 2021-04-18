@@ -10,12 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.blogportalsystem.R
-import com.example.blogportalsystem.adapter.CommentAdapter
 import com.example.blogportalsystem.adapter.ReplyAdapter
 import com.example.blogportalsystem.api.ServiceBuilder
-import com.example.blogportalsystem.model.Comment
 import com.example.blogportalsystem.model.Reply
-import com.example.blogportalsystem.repository.CommentRepository
 import com.example.blogportalsystem.repository.ReplyRepository
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.coroutines.CoroutineScope
@@ -29,7 +26,7 @@ class ShowReplyActivity : AppCompatActivity() {
     private lateinit var TvComment:TextView
     private lateinit var EtAddReply:EditText
     private lateinit var btnAddReply:Button
-    private lateinit var replyRecyclerview:RecyclerView
+    private lateinit var replyrecyclerview:RecyclerView
     private var commentid=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +37,7 @@ class ShowReplyActivity : AppCompatActivity() {
         TvComment=findViewById(R.id.TvComment)
         EtAddReply=findViewById(R.id.EtAddReply)
         btnAddReply=findViewById(R.id.btnAddReply)
-        replyRecyclerview=findViewById(R.id.replyRecyclerview)
+        replyrecyclerview=findViewById(R.id.replyrecyclerview)
 
         val intent = intent;
         if(intent.extras!=null){
@@ -81,9 +78,9 @@ class ShowReplyActivity : AppCompatActivity() {
 
                 if (response.success == true){
                     withContext(Dispatchers.Main){
-//                        Toast.makeText(context, "${response.data}", Toast.LENGTH_SHORT).show()
-                        replyRecyclerview.adapter = ReplyAdapter(this@ShowReplyActivity!!,response.data!! as MutableList)
-                        replyRecyclerview.layoutManager= LinearLayoutManager(this@ShowReplyActivity)
+                        Toast.makeText(this@ShowReplyActivity, "${response.data}", Toast.LENGTH_SHORT).show()
+                        replyrecyclerview.adapter = ReplyAdapter(this@ShowReplyActivity,response.data!! as MutableList)
+                        replyrecyclerview.layoutManager= LinearLayoutManager(this@ShowReplyActivity)
                     }
                 }
             }
@@ -96,7 +93,7 @@ class ShowReplyActivity : AppCompatActivity() {
     }
     private fun addreply(){
         val rplybody=EtAddReply.text.toString()
-        val reply= Reply(replybody = rplybody)
+        val reply= Reply(replybody = rplybody,commentID =commentid )
         CoroutineScope(Dispatchers.IO).launch {
 
             try

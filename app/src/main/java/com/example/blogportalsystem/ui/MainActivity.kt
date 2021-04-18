@@ -154,17 +154,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
-        val values = p0!!.values[0]
-        if(values>=6){
-            linearLayout.setBackgroundColor(Color.BLACK);
-
-        }
-        else if(values<=5){
-            linearLayout.setBackgroundColor(Color.WHITE);
-        }
+//        val values = p0!!.values[0]
+//        if(values>=20000){
+//            linearLayout.setBackgroundColor(Color.LTGRAY);
+//
+//        }
+//        else if(values<=19000){
+//            linearLayout.setBackgroundColor(Color.WHITE);
+//        }
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("Not yet implemented")
     }
 }

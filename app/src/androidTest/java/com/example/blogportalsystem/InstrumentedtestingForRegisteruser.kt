@@ -26,7 +26,7 @@ class InstrumentedtestingForRegisteruser {
             .perform(typeText("test2131"))
             .perform(closeSoftKeyboard())
        onView(withId(R.id.edtemail))
-            .perform(typeText("Test22@gmail.com"))
+            .perform(typeText("Test2231@gmail.com"))
             .perform(closeSoftKeyboard())
         Thread.sleep(2000)
        onView(withId(R.id.edtpassword))

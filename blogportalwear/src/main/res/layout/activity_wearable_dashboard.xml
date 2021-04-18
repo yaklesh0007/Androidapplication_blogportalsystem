@@ -40,11 +40,11 @@
         android:text="Gender"
         android:textColor="#DE5E7D"
         />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:id="@+id/BtnwearNotification"
-        android:drawableStart="@drawable/notification"
-        android:drawablePadding="10dp"
-        android:text="show notification"/>
+<!--    <Button-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--       android:id="@+id/BtnwearNotification"-->
+<!--        android:drawableStart="@drawable/notification"-->
+<!--        android:drawablePadding="10dp"-->
+<!--        android:text="show notification"/>-->
 </LinearLayout>

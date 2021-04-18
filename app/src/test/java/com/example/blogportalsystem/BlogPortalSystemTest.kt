@@ -48,6 +48,7 @@ class BlogPortalSystemTest {
     @Test
     fun checkinsertblog()= runBlocking {
         Postrepository= PostRepository()
+        userRepository= UserRepository()
         val post=Post(title = "test",description = "tested tested",categoryID = "Social")
         ServiceBuilder.token ="Bearer " + userRepository.checkUser("aklesh@gmail.com","aklesh").token
         val responce=Postrepository.addBlog(post)
@@ -59,13 +60,23 @@ class BlogPortalSystemTest {
     @Test
     fun checkupdateblog()= runBlocking {
         Postrepository= PostRepository()
-        val post=Post(title = "test",description = "tested tested",categoryID = "Social")
+        userRepository= UserRepository()
+        val post=Post(title = "test",description = "tested tested",categoryID = "Social",userID ="60507e787f2b983230735194" )
         ServiceBuilder.token ="Bearer " + userRepository.checkUser("aklesh@gmail.com","aklesh").token
-        val responce=Postrepository.blogupdate(post,"60697105b42b68086425104d")
+        val responce=Postrepository.blogupdate(post,"607be2be92308f11e026c720")
 
         val expectedResult=true
         val actualResult=responce.success
         Assert.assertEquals(expectedResult,actualResult)
 
+    }
+    @Test
+    fun checkdeleteblog()= runBlocking {
+        Postrepository= PostRepository()
+        userRepository= UserRepository()
+        val response=Postrepository.deleteblog("607be2be92308f11e026c720","60507e787f2b983230735194")
+        val expectedResult=true
+        val actualResult=response.success
+        Assert.assertEquals(expectedResult,actualResult)
     }
 }

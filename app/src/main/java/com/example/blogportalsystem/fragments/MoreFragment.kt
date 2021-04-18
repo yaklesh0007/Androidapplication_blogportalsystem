@@ -76,19 +76,18 @@ private fun logout(){
     }
 
     override fun onSensorChanged(p0: SensorEvent?) {
-        val values = p0!!.values[1]
-        if (values < 0){
-            logout()
-        }
-
-        else if (values > 0)
-        {
-            startActivity(Intent(context,ShowMyBlog::class.java))
-        }
+//        val values = p0!!.values[1]
+//        if (values < 0){
+//            logout()
+//        }
+//
+//        else if (values > 0)
+//        {
+//            startActivity(Intent(context,ShowMyBlog::class.java))
+//        }
 
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        TODO("Not yet implemented")
     }
 }

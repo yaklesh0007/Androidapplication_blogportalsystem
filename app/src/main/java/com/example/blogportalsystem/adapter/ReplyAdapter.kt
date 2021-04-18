@@ -40,7 +40,7 @@ class ReplyAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReplyViewHolder {
         val view= LayoutInflater.from(parent.context)
-            .inflate(R.layout.comment,parent,false)
+            .inflate(R.layout.showreplies,parent,false)
         return ReplyViewHolder(view)
     }
 
@@ -92,7 +92,7 @@ class ReplyAdapter(
                     }catch (ex: Exception){
                         withContext(Dispatchers.Main){
                             Toast.makeText(context,
-                                ex.toString(),
+                                "not allowed to delete",
                                 Toast.LENGTH_SHORT)
                                 .show()
                         }

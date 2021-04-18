@@ -62,6 +62,8 @@ class SignUpActivity : AppCompatActivity() {
         btnSignup = findViewById(R.id.btnSignup)
         linearLayout = findViewById(R.id.linearLayout)
 
+        TvSignUpTitle.text="Sign up Here!!"
+
         btnSignup.setOnClickListener {
             if (edtfullname.text.isEmpty()) {
                 edtfullname.error = "Full name is required !!"
