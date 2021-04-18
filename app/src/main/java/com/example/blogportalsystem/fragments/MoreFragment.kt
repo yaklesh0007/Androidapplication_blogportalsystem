@@ -3,6 +3,10 @@ package com.example.blogportalsystem.fragments
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,12 +22,14 @@ import com.example.blogportalsystem.ui.ShowMyBlog
 import kotlinx.coroutines.runBlocking
 
 
-class MoreFragment : Fragment() {
+class MoreFragment : Fragment(), SensorEventListener {
 
 private lateinit var btnMap:Button
 private lateinit var btnshowmypost:Button
 private lateinit var btnaddpost:Button
 private lateinit var btnlogout:Button
+    private lateinit var sensorManager: SensorManager
+    private var sensor: Sensor? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,19 +54,43 @@ private lateinit var btnlogout:Button
         }
         btnlogout.setOnClickListener {
 
-            context?.getSharedPreferences("MyPref", MODE_PRIVATE)?.edit()?.clear()?.apply()
-            val intent = Intent(context, MainActivity::class.java)
-            startActivity(intent)
-            Toast.makeText(
-                context,
-                "Logout Successfully", Toast.LENGTH_SHORT
-            ).show()
+           logout()
         }
         return view
     }
+private fun logout(){
+    context?.getSharedPreferences("MyPref", MODE_PRIVATE)?.edit()?.clear()?.apply()
+    val intent = Intent(context, MainActivity::class.java)
+    startActivity(intent)
+    Toast.makeText(
+        context,
+        "Logout Successfully", Toast.LENGTH_SHORT
+    ).show()
+}
+    private fun checkSensor(): Boolean {
+        var flag = true
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE) == null) {
+            flag = false
+        }
+        return flag
+    }
 
+    override fun onSensorChanged(p0: SensorEvent?) {
+        val values = p0!!.values[1]
+        if (values < 0){
+            logout()
+        }
 
+        else if (values > 0)
+        {
+            startActivity(Intent(context,ShowMyBlog::class.java))
+        }
 
+    }
+
+    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
+        TODO("Not yet implemented")
+    }
 
 
 }
